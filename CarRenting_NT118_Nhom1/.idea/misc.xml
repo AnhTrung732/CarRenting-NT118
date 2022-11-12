@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_activity.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_home.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_meassage.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_message.xml" value="0.1453804347826087" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_person.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_setting.xml" value="0.24114583333333334" />
+        <entry key="..\:/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/menu/bottom_menu.xml" value="0.24010416666666667" />
         <entry key="..\:/CarRenting-NT118/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
       </map>
     </option>
