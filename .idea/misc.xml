@@ -25,6 +25,7 @@
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/drawable/white_round_button.xml" value="0.2265" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_add_vehicle.xml" value="0.22509057971014493" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_sign_in.xml" value="0.21981981981981982" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_start_app.xml" value="0.21981981981981982" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/dimens.xml" value="0.22509057971014493" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/dot_circle.xml" value="0.20765765765765765" />
@@ -34,6 +35,14 @@
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_person.xml" value="0.22509057971014493" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_setting.xml" value="0.22509057971014493" />
         <entry key="..\:/study/Android Studio/CarRenting-NT118/CarRenting_NT118_Nhom1/app/src/main/res/layout/round_button.xml" value="0.22509057971014493" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/drawable/blue_round_button.xml" value="0.1385" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/drawable/image_illustration.xml" value="0.124" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/drawable/white_round_button.xml" value="0.1385" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_add_vehicle.xml" value="0.21981981981981982" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_sign_in.xml" value="0.21981981981981982" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/layout/activity_start_app.xml" value="0.21981981981981982" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/layout/fragment_activity.xml" value="0.21981981981981982" />
+        <entry key="..\:/study/Android Studio/CarRenting_NT118_Nhom1/app/src/main/res/layout/rounded_edit_text.xml" value="0.21981981981981982" />
       </map>
     </option>
   </component>
