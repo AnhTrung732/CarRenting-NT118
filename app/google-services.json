@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "459605431953",
+    "project_id": "car-rentor",
+    "storage_bucket": "car-rentor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459605431953:android:216346bb57e70aac6b1130",
+        "android_client_info": {
+          "package_name": "com.example.carrenting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459605431953-3uf26g0n34r80riti8f164jnol1l9on6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carrenting",
+            "certificate_hash": "d181689323f334de423db70e938120248026e446"
+          }
+        },
+        {
+          "client_id": "459605431953-4uhhkfmqsflcfqd5e95cuikb5jveh7ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNegzGKDzVYzufTDNF5HjCDzQhJPSoU_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459605431953-4uhhkfmqsflcfqd5e95cuikb5jveh7ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
