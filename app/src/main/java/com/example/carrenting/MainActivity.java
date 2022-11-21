@@ -24,6 +24,6 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (NullPointerException e){}
 
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_cicard_upload);
     }
 }

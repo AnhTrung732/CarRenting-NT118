@@ -8,4 +8,7 @@
     <string name="hint_password">Mật khẩu</string>
     <string name="sign_in_remember">Lưu mật khẩu</string>
     <string name="sign_in_forget">Quên mật khẩu ?</string>
+    <string name="create_account">Create an account</string>
+    <string name="create_account_text_1">Start with your information!</string>
+    <string name="ci_card_upload_image">Upload citizen identification front card</string>
 </resources>
