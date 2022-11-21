@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.carrenting">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,13 +21,31 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".Service.UserAuthentication.LoginActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".Service.UserAuthentication.RegisterActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ActivityPages.StartAppActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CarRenting.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

@@ -4,8 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="signIn">Đăng nhập</string>
     <string name="signUp">Đăng ký</string>
-    <string name="hint_sign_in">Tên đăng nhập</string>
-    <string name="hint_password">Mật khẩu</string>
+    <string name="sign_in_hint_email">Email</string>
+    <string name="sign_in_hint_password">Mật khẩu</string>
     <string name="sign_in_remember">Lưu mật khẩu</string>
     <string name="sign_in_forget">Quên mật khẩu ?</string>
     <string name="create_account">Create an account</string>
