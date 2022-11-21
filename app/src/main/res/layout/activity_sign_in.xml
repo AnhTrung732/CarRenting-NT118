@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSignIn2"
+        android:id="@+id/btn_signIn"
         android:layout_width="326dp"
         android:layout_height="48dp"
         android:layout_marginTop="80dp"
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/edtText_password"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -58,13 +58,13 @@
     </View>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edtTxt_email"
         android:layout_width="350dp"
         android:layout_height="49dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_edit_text"
         android:ems="10"
-        android:hint="@string/hint_sign_in"
+        android:hint="@string/sign_in_hint_email"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:textColorHint="@color/sky"
@@ -74,14 +74,14 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/edtText_password"
         android:layout_width="350dp"
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_edit_text"
         android:drawableRight="@drawable/sign_in_eye_hint"
         android:ems="10"
-        android:hint="@string/hint_password"
+        android:hint="@string/sign_in_hint_password"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -89,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_email" />
 
     <CheckBox
         android:id="@+id/checkBox2"
@@ -100,20 +100,20 @@
         android:text="@string/sign_in_remember"
         android:textColor="@color/gray"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtText_password" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="499dp"
         android:layout_height="476dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignIn2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signIn"
         app:srcCompat="@drawable/sign_in_background" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_forget"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtText_password" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
