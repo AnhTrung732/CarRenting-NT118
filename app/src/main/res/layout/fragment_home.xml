@@ -19,7 +19,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="25dp"
-            android:background="@drawable/round_border">
+            android:background="@drawable/white_round_border">
 
             <Button
                 android:layout_width="wrap_content"
@@ -276,7 +276,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/shadow_corner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
