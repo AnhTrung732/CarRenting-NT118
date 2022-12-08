@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,13 +10,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        android:background="@color/sky">
+        android:background="@color/sky"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/round_border">
 
@@ -46,25 +47,24 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:id="@+id/gridActivity"
         android:rowCount="2"
         android:columnCount="3"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="80dp">
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/car_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_height="100dp"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -91,14 +91,14 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/motorbike_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_height="100dp"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -125,14 +125,14 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bicycle_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_height="100dp"
             android:layout_row="0"
             android:layout_column="2"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -159,14 +159,14 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/locate_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_height="100dp"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -193,14 +193,14 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/discount_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_height="100dp"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -227,14 +227,14 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/support_card"
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_height="100dp"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_gravity="top"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -260,6 +260,30 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KHÁM PHÁ DỊCH VỤ"
+        android:textAlignment="center"
+        android:textColor="@color/sky"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/gridActivity"
+        android:layout_marginBottom="15dp"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/round_corner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="100dp"
+        tools:ignore="MissingConstraints" />
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
