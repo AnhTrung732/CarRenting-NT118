@@ -268,14 +268,14 @@
         android:textAlignment="center"
         android:textColor="@color/sky"
         android:textStyle="bold"
-        android:textSize="35sp"
+        android:textSize="38sp"
         app:layout_constraintBottom_toTopOf="@+id/gridActivity"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="25dp"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:background="@drawable/round_corner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
