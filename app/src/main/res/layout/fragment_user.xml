@@ -6,12 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <View
+    <LinearLayout
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         tools:ignore="MissingConstraints"
-        android:background="@color/sky"/>
+        android:background="@color/sky"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="25dp"
+            android:background="@drawable/white_round_border">
+        </ImageView>
+
+    </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
