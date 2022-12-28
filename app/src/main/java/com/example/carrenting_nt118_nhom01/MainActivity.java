@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.activity:
                     replaceFragment(new ActivityFragment());
                     break;
-                case R.id.user:
+                /*case R.id.user:
                     replaceFragment(new UserFragment());
-                    break;
+                    break;*/
                 case R.id.message:
                     replaceFragment(new MessageFragment());
                     break;
