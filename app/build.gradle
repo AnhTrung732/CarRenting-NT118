@@ -6,6 +6,13 @@ plugins {
 android {
     compileSdk 32
 
+    viewBinding {
+        enabled = true
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.carrenting"
         minSdk 21
