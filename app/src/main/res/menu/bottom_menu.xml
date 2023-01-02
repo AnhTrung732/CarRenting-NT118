@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
-        android:id="@+id/fmHome"
+    <item
+        android:id="@+id/home"
+        android:title="home"
         android:icon="@drawable/ic_home"
         tools:ignore="HardcodedText" />
-    <item android:title="Activity"
-        android:id="@+id/fmActivity"
+    <item
+        android:id="@+id/activity"
+        android:title="activity"
         android:icon="@drawable/ic_activity"
         tools:ignore="HardcodedText" />
-    <item android:title="User"
-        android:id="@+id/fmUser"
+    <item
+        android:id="@+id/user"
+        android:title="user"
         android:icon="@drawable/ic_user"
         tools:ignore="HardcodedText" />
-    <item android:title="Message"
-        android:id="@+id/fmMessage"
+
+    <item
+        android:id="@+id/message"
+        android:title="message"
         android:icon="@drawable/ic_message"
         tools:ignore="HardcodedText" />
-    <item android:title="Setting"
-        android:id="@+id/fmSetting"
+    <item
+        android:id="@+id/setting"
+        android:title="setting"
         android:icon="@drawable/ic_setting"
         tools:ignore="HardcodedText" />
 </menu>

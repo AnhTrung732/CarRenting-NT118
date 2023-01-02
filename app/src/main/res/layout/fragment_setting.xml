@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Setting"
-    android:id="@+id/fmSetting"
-    tools:ignore="InvalidId">
+    tools:context=".FragmentPages.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SETTING"
+        android:layout_gravity="center"
+        android:textSize="50sp"
         tools:ignore="HardcodedText" />
 
 </FrameLayout>

@@ -12,8 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.ActivityPages.StartAppActivity;
-import com.example.carrenting.MainActivity;
+import com.example.carrenting.ActivityPages.MainActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
