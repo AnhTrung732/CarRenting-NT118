@@ -1,4 +1,4 @@
-package com.example.carrenting.FragmentPages;
+package com.example.carrenting.FragmentPages.Customer;
 
 import android.os.Bundle;
 
