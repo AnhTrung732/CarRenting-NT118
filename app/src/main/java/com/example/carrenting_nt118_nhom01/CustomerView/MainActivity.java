@@ -1,4 +1,4 @@
-package com.example.carrenting_nt118_nhom01;
+package com.example.carrenting_nt118_nhom01.CustomerView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.carrenting_nt118_nhom01.R;
 import com.example.carrenting_nt118_nhom01.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

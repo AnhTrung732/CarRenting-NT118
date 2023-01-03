@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".CustomerView.MessageFragment">
 
     <TextView
         android:id="@+id/tv_title"
-        android:text="HOẠT ĐỘNG"
+        android:text="TIN NHẮN"
         android:textStyle="bold"
         android:textSize="40sp"
         android:textColor="@color/sunset"
@@ -19,42 +19,23 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         tools:ignore="HardcodedText,MissingConstraints" />
-    <LinearLayout
-        android:id="@+id/linear_history"
-        android:orientation="horizontal"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_title"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints">
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_history"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            tools:ignore="InefficientWeight" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="5"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="normal"
-            android:text="Lịch sử" />
-    </LinearLayout>
-    
+            android:id="@+id/ic_delete"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_delete"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="35dp"
+            tools:ignore="InefficientWeight,MissingConstraints" />
+
     <Button
-        android:id="@+id/btn_wait"
+        android:id="@+id/btn_message"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:text="Đang chờ"
+        android:text="Trò chuyện"
         android:textSize="18sp"
         android:background="@drawable/blue_round_border"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -63,10 +44,10 @@
         android:layout_marginStart="15dp"
         tools:ignore="HardcodedText,MissingConstraints" />
     <Button
-        android:id="@+id/btn_rate"
+        android:id="@+id/btn_noti"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:text="Đánh giá"
+        android:text="Thông báo"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +62,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wait"
+        app:layout_constraintTop_toBottomOf="@+id/btn_message"
         android:layout_marginTop="25dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CustomerView.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_marginEnd="20dp"
                 app:labelVisibilityMode="labeled"
                 android:background="@android:color/transparent"
-                app:menu="@menu/bottom_menu">
+                app:menu="@menu/customer_bottom_menu">
             </com.google.android.material.bottomnavigation.BottomNavigationView>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
