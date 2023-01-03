@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.carrenting.FragmentPages.ActivityFragment;
-import com.example.carrenting.FragmentPages.HomeFragment;
-import com.example.carrenting.FragmentPages.MessageFragment;
-import com.example.carrenting.FragmentPages.SettingFragment;
-import com.example.carrenting.FragmentPages.UserFragment;
+import com.example.carrenting.FragmentPages.Customer.ActivityFragment;
+import com.example.carrenting.FragmentPages.Customer.HomeFragment;
+import com.example.carrenting.FragmentPages.Customer.MessageFragment;
+import com.example.carrenting.FragmentPages.Customer.SettingFragment;
+import com.example.carrenting.FragmentPages.Customer.UserFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
 

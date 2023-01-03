@@ -68,118 +68,91 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName12"
-        android:layout_width="123dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="Ngày sinh"
-        android:inputType="textPersonName"
-        android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName11"
-        android:layout_width="181dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="CCCD"
-        android:inputType="textPersonName"
-        android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName10"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPasswordAgainLayout"
         android:layout_width="329dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="Nhập lại mật khẩu"
-        android:inputType="textPersonName"
-        android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName9"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+        app:passwordToggleEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtPasswordAgain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPersonName"
+            android:textColor="@color/sky"
+            android:textColorHint="@color/sky"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
-        android:layout_width="133dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="Họ"
-        android:inputType="textPersonName"
-        android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/edtTxtEmail"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/sky"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPhone"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhone" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName9"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPasswordLayout"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="Mật khẩu"
-        android:inputType="textPersonName"
-        android:textColor="@color/sky"
-        android:textColorHint="@color/sky"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtEmail"
+        app:passwordToggleEnabled="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Mật khẩu"
+            android:textColor="@color/sky"
+            android:textColorHint="@color/sky"
+             />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="169dp"
+        android:id="@+id/edtTxtPhone"
+        android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/sky"
         android:ems="10"
-        android:hint="Tên"
+        android:hint="Số điện thoại"
         android:inputType="textPersonName"
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName6"
+        app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:srcCompat="@drawable/create_account_curved_arrow"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="741dp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="325dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/blue_round_button"
+        android:text="Đăng ký"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordAgainLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordAgainLayout" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

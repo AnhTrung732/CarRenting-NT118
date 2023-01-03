@@ -8,5 +8,7 @@
         android:endColor="@color/white"/>
     <stroke
         android:color="@color/sunflower"
-        android:width="1dp"/>
+        android:width="2dp"/>
+    <corners
+        android:radius="360dp"/>
 </shape>
