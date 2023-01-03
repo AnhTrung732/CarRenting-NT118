@@ -7,60 +7,61 @@
     tools:context=".HomeFragment">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="100dp"
         android:background="@color/sky"
+        android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
             android:layout_marginTop="25dp"
-            android:background="@drawable/white_round_border">
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/white_round_border"
+            android:orientation="horizontal">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="40"
                 android:layout_gravity="center"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/ic_search"/>
+                android:layout_weight="40"
+                android:background="@drawable/ic_search" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="30"
-                android:layout_marginStart="15dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="30"
                 android:text="Search"
                 android:textColor="@color/grey"
-                android:layout_marginEnd="15dp"
-                tools:ignore="HardcodedText">
-            </EditText>
+                tools:ignore="Autofill,HardcodedText,LabelFor,TextFields" />
         </LinearLayout>
     </LinearLayout>
 
     <GridLayout
+        android:id="@+id/gridActivity"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:id="@+id/gridActivity"
-        android:rowCount="2"
-        android:columnCount="3"
         android:layout_marginBottom="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:columnCount="3"
+        android:rowCount="2"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         tools:ignore="MissingConstraints">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/car_card"
             android:layout_width="85dp"
+            android:layout_height="100dp"
             android:layout_row="0"
             android:layout_column="0"
-            android:layout_height="100dp"
             android:layout_gravity="top"
             android:layout_margin="25dp"
             app:cardCornerRadius="20dp"
@@ -69,21 +70,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_car"/>
+                    android:src="@drawable/ic_car" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Xe hơi"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -103,21 +104,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_motorbike"/>
+                    android:src="@drawable/ic_motorbike" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Xe máy"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -137,21 +138,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_bicycle"/>
+                    android:src="@drawable/ic_bicycle" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Xe đạp"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -171,21 +172,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_locate"/>
+                    android:src="@drawable/ic_locate" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gần đây"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -205,21 +206,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_gift"/>
+                    android:src="@drawable/ic_gift" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ưu dãi"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -239,21 +240,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_support"/>
+                    android:src="@drawable/ic_support" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hỗ trợ"
-                    android:textColor="@color/sky"
                     android:textAlignment="center"
+                    android:textColor="@color/sky"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -264,26 +265,30 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:text="KHÁM PHÁ DỊCH VỤ"
         android:textAlignment="center"
-        android:textColor="@color/sky"
-        android:textStyle="bold"
+        android:textColor="@color/sunset"
         android:textSize="38sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/gridActivity"
-        android:layout_marginBottom="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
         tools:ignore="HardcodedText,MissingConstraints" />
 
-    <LinearLayout
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/shadow_corner"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="100dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/gridActivity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
