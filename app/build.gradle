@@ -64,4 +64,8 @@ dependencies {
     //responsive text-size
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
 
+    //validate password
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
+
+
 }

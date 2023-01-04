@@ -18,21 +18,26 @@
         android:theme="@style/Theme.CarRenting"
         tools:targetApi="31">
         <activity
+            android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar"
+            android:exported="false"/>
+        <activity
             android:name=".ActivityPages.MainActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
             android:name=".Service.UserAuthentication.LoginActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.UserAuthentication.RegisterActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
+            android:name=".Service.UserAuthentication.Register.RegisterActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
             android:name=".ActivityPages.StartAppActivity"
             android:exported="true"
             android:theme="@style/Theme.CarRenting.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
