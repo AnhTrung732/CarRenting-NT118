@@ -80,6 +80,36 @@
                     android:background="@drawable/ic_next"
                     android:layout_marginEnd="15dp"/>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_connect"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="-2dp"
+                android:layout_marginBottom="-2dp"
+                android:orientation="horizontal"
+                android:background="@drawable/yellow_line"
+                android:padding="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_information"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:id="@+id/tv_connect"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:layout_gravity="center"
+                    android:text="Đăng ký nhà cung cấp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_noti"
+                    android:textSize="24sp"
+                    android:textColor="@color/sky"
+                    tools:ignore="HardcodedText,MissingConstraints" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_next"
+                    android:layout_marginEnd="15dp"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout_social_media"
@@ -90,7 +120,7 @@
                 android:layout_marginBottom="-2dp"
                 android:padding="15dp"
                 android:background="@drawable/yellow_line"
-                app:layout_constraintTop_toBottomOf="@+id/layout_information"
+                app:layout_constraintTop_toBottomOf="@+id/layout_connect"
                 tools:ignore="MissingConstraints">
                 <TextView
                     android:id="@+id/tv_social_media"
