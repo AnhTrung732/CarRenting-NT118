@@ -21,8 +21,6 @@ import com.example.carrenting.R;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
