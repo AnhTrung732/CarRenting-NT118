@@ -103,8 +103,8 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         if (strPassword.equals(strPasswordAgain) == false || strPassword.equals("") == true)
         {
             Toast.makeText(this,"Mật khẩu không khớp, mời nhập lại",Toast.LENGTH_LONG);
-//          edtTxtPassword.setText("");
-//          edtTxtPasswordAgain.setText("");
+            edtTxtPassword.setText("");
+            edtTxtPasswordAgain.setText("");
             isValid = false;
         }
     }
@@ -126,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                             Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
                             intent.putExtra("phone", strPhone);
                             startActivity(intent);
-                            finishAffinity();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());

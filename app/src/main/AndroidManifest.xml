@@ -17,9 +17,30 @@
         android:theme="@style/Theme.CarRenting"
         tools:targetApi="31">
         <activity
+            android:name=".PayMentInforActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RegisterBeOwner"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ChangeUserInfor"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Service.UserAuthentication.Register.ValidatePhoneActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
             android:name=".Service.UserAuthentication.LoginActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />

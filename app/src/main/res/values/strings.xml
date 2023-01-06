@@ -12,4 +12,17 @@
     <string name="create_account">Create an account</string>
     <string name="create_account_text_1">Start with your information!</string>
     <string name="ci_card_upload_image">Upload citizen identification front card</string>
+
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_activity">Hoạt động</string>
+    <string name="nav_message">Tin nhắn</string>
+    <string name="nav_setting">Cài đặt</string>
+
+    <string name="nav_user">Người dùng</string>
+    <string name="nav_infor">Thông tin tài khoản</string>
+    <string name="nav_sign_owner">Đăng ký nhà cung cấp</string>
+    <string name="nav_payment_infor">Thông tin thanh toán</string>
+
+    <string name="open_drawer">Open navigation drawer</string>
+    <string name="close_drawer">Close navigation drawer</string>
 </resources>
