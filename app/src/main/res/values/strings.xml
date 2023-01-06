@@ -22,6 +22,7 @@
     <string name="nav_infor">Thông tin tài khoản</string>
     <string name="nav_sign_owner">Đăng ký nhà cung cấp</string>
     <string name="nav_payment_infor">Thông tin thanh toán</string>
+    <string name="nav_sign_out">Đăng xuất</string>
 
     <string name="open_drawer">Open navigation drawer</string>
     <string name="close_drawer">Close navigation drawer</string>
