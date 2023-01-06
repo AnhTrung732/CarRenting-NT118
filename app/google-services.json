@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "459605431953-3uf26g0n34r80riti8f164jnol1l9on6.apps.googleusercontent.com",
+          "client_id": "459605431953-skthmo6439k0sipgpvjd5hlbhptvuh43.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.carrenting",
-            "certificate_hash": "d181689323f334de423db70e938120248026e446"
+            "certificate_hash": "26bf9a8b25f06c2970e9afdc4ced89b237019fdc"
           }
         },
         {

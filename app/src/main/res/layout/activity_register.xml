@@ -60,22 +60,22 @@
         android:id="@+id/view3"
         android:layout_width="356dp"
         android:layout_height="496dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="27dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtTxtPasswordAgainLayout"
         android:layout_width="329dp"
-        android:layout_height="48dp"
+        android:layout_height="58dp"
         android:layout_marginTop="16dp"
         app:passwordToggleEnabled="true"
         app:layout_constraintEnd_toEndOf="@+id/edtTxtPasswordLayout"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout">
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLayout"
+        app:passwordToggleDrawable="@drawable/sign_in_eye_hint">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtPasswordAgain"
             android:layout_width="match_parent"
@@ -89,29 +89,36 @@
              />
     </com.google.android.material.textfield.TextInputLayout>
 
-
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxt_emailLayout"
+        android:layout_width="329dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxtPhoneLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhoneLayout"
+        >
     <EditText
         android:id="@+id/edtTxtEmail"
-        android:layout_width="329dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/sky"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
-        app:layout_constraintEnd_toEndOf="@+id/edtTxtPhone"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhone" />
+         />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtTxtPasswordLayout"
         android:layout_width="329dp"
-        android:layout_height="48dp"
+        android:layout_height="58dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/edtTxtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtEmail"
+        app:layout_constraintEnd_toEndOf="@+id/edtTxt_emailLayout"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_emailLayout"
         app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/sign_in_eye_hint"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTxtPassword"
@@ -126,24 +133,33 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <EditText
-        android:id="@+id/edtTxtPhone"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxtPhoneLayout"
         android:layout_width="329dp"
-        android:layout_height="48dp"
+        android:layout_height="58dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/sky"
-        android:ems="10"
-        android:hint="Số điện thoại"
-        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
+        >
+
+        <EditText
+            android:id="@+id/edtTxtCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Số điện thoại"
+            android:inputType="textPersonName"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/btnSendCode"
         android:layout_width="325dp"
         android:layout_height="42dp"
         android:layout_marginTop="36dp"

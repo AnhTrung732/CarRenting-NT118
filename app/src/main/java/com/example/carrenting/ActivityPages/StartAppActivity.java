@@ -1,7 +1,9 @@
 package com.example.carrenting.ActivityPages;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,31 +12,52 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.LoginActivity;
-import com.example.carrenting.Service.UserAuthentication.RegisterActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StartAppActivity extends AppCompatActivity {
-    private Button btn_signIn, btn_register;
+    private Button btn_startApp;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_app);
 
-        btn_signIn = findViewById(R.id.btn_signIn_startapp);
-        btn_register = findViewById(R.id.btn_register_startapp);
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                nextActivity();
+//            }
+//        }, 2000);
 
-        btn_signIn.setOnClickListener(new View.OnClickListener() {
+        btn_startApp = findViewById(R.id.btn_startApp);
+
+        btn_startApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartAppActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StartAppActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+
+    }
+
+    private void nextActivity() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+//        if (user == null){
+//            //Chưa login
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+//        }
+//        else
+//        {
+//            // Da login
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//        }
+
     }
 }

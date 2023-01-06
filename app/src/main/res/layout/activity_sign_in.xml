@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/edtText_password"
+        app:layout_constraintTop_toBottomOf="@+id/edtText_passwordLayout"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -36,14 +36,14 @@
         android:shadowDx="0"
         android:shadowDy="4"
         android:shadowRadius="4"
+        android:text="SIGN IN"
         android:textColor="@color/sky"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="SIGN IN" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
@@ -56,40 +56,60 @@
 
 
     </View>
-
-    <EditText
-        android:id="@+id/edtTxt_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtTxt_emailLayout"
         android:layout_width="350dp"
-        android:layout_height="49dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_edit_text"
         android:ems="10"
-        android:hint="@string/sign_in_hint_email"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:textColorHint="@color/sky"
+        app:hintTextColor="@color/sky"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="@+id/view"
+        >
+        <EditText
+            android:id="@+id/edtTxt_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="@string/sign_in_hint_email"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColorHint="@color/sky"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/edtText_password"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtText_passwordLayout"
         android:layout_width="350dp"
-        android:layout_height="49dp"
+        android:layout_height="58dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_edit_text"
-        android:drawableRight="@drawable/sign_in_eye_hint"
         android:ems="10"
-        android:hint="@string/sign_in_hint_password"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColorHint="@color/sky"
+        app:hintTextColor="@color/sky"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_emailLayout"
+        app:passwordToggleDrawable="@drawable/sign_in_eye_hint"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/edtText_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_edit_text"
+            android:drawableRight="@drawable/sign_in_eye_hint"
+            android:hint="@string/sign_in_hint_password"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/sky"
+
+            android:textColorHint="@color/sky" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <CheckBox
         android:id="@+id/checkBox2"
@@ -100,7 +120,7 @@
         android:text="@string/sign_in_remember"
         android:textColor="@color/gray"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/edtText_password" />
+        app:layout_constraintTop_toBottomOf="@+id/edtText_passwordLayout" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -124,7 +144,31 @@
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/edtText_password" />
+        app:layout_constraintTop_toBottomOf="@+id/edtText_passwordLayout" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:text="Chưa có tài khoản ? Hãy "
+        app:layout_constraintStart_toStartOf="@+id/btn_signIn"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signIn" />
+
+    <TextView
+        android:id="@+id/txtSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-1dp"
+        android:clickable="true"
+        android:text="Đăng ký"
+        android:textColor="@color/sky"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

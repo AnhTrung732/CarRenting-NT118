@@ -54,39 +54,28 @@
         android:text=".   .   .   .   ."
         android:textSize="@dimen/_37sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_signIn_startapp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_startApp"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_signIn_startapp"
+    <Button
+        android:id="@+id/btn_startApp"
         android:layout_width="@dimen/widthLarge"
         android:layout_height="48dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/blue_round_button"
         android:backgroundTint="@color/sky"
-        android:text="@string/signIn"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="@dimen/_20ssp"
+        android:text="@string/getStarted"
         android:textColor="@color/white"
+        app:backgroundTint="@color/sky"
+        app:icon="@drawable/icon_next"
+        app:iconGravity="end"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_startapp"
-        android:layout_width="@dimen/widthLarge"
-        android:layout_height="@dimen/_37sdp"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginBottom="@dimen/_91sdp"
-        android:background="@drawable/white_round_button"
-        android:text="@string/signUp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_signIn_startapp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_signIn_startapp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signIn_startapp"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

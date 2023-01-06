@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtTxt_email, edtTxt_password;
+    private TextView txtSignUp;
     private Button btn_signIn;
     private FirebaseAuth mAuth;
     @Override
@@ -29,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
+        txtSignUp = findViewById(R.id.txtSignUp);
         edtTxt_email = findViewById(R.id.edtTxt_email);
         edtTxt_password = findViewById(R.id.edtText_password);
         btn_signIn = findViewById(R.id.btn_signIn);
@@ -39,6 +43,17 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+        txtSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextRegister();
+            }
+        });
+    }
+
+    private void nextRegister() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void login() {
