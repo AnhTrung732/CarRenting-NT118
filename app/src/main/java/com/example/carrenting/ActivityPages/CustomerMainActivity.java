@@ -16,7 +16,7 @@ import com.example.carrenting.FragmentPages.Customer.UserFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class CustomerMainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.activity:
                     replaceFragment(new ActivityFragment());
                     break;
-                case R.id.user:
+/*                case R.id.user:
                     replaceFragment(new UserFragment());
-                    break;
+                    break;*/
                 case R.id.message:
                     replaceFragment(new MessageFragment());
                     break;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
         fragmentTransaction.commit();
     }
 

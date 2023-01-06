@@ -16,24 +16,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarRenting"
         tools:targetApi="31">
+
         <activity
-            android:name=".ActivityPages.MainActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
+            android:name=".ActivityPages.VehiclesOwner_MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
-            android:name=".Service.UserAuthentication.LoginActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
-        <activity
-            android:name=".Service.UserAuthentication.RegisterActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar"></activity>
-        <activity
-            android:name=".ActivityPages.StartAppActivity"
+            android:name=".ActivityPages.CustomerMainActivity"
             android:exported="true"
             android:theme="@style/Theme.CarRenting.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Service.UserAuthentication.LoginActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
+        <activity
+            android:name=".Service.UserAuthentication.RegisterActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
+        <activity
+            android:name=".ActivityPages.StartAppActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
     </application>
 
 </manifest>
