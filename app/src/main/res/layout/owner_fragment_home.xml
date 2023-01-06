@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentPages.VehiclesOwner.VehiclesOwner_HomeFragment">
+    tools:context=".FragmentPages.VehiclesOwner.OwnerHomeFragment">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
