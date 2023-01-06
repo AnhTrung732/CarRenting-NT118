@@ -9,11 +9,11 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.example.carrenting.FragmentPages.Customer.HomeFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_ActivityFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerHomeFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerMessageFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerSettingFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerVehicleFragment;
+import com.example.carrenting.FragmentPages.Owner.VehiclesOwner_ActivityFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerHomeFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerMessageFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
 
