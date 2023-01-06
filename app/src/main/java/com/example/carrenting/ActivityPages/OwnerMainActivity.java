@@ -9,7 +9,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.example.carrenting.FragmentPages.Customer.HomeFragment;
-import com.example.carrenting.FragmentPages.Owner.VehiclesOwner_ActivityFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerHomeFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerMessageFragment;
 import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
@@ -36,7 +36,7 @@ public class OwnerMainActivity extends AppCompatActivity {
                     replaceFragment(new OwnerHomeFragment());
                     break;
                 case R.id.activity:
-                    replaceFragment(new VehiclesOwner_ActivityFragment());
+                    replaceFragment(new OwnerActivityFragment());
                     break;
                 case R.id.vehicle:
                     replaceFragment(new OwnerVehicleFragment());
