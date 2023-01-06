@@ -10,10 +10,10 @@ import android.os.Bundle;
 
 import com.example.carrenting.FragmentPages.Customer.HomeFragment;
 import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_ActivityFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_HomeFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_MessageFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_SettingFragment;
-import com.example.carrenting.FragmentPages.VehiclesOwner.VehiclesOwner_VehicleFragment;
+import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerHomeFragment;
+import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerMessageFragment;
+import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerSettingFragment;
+import com.example.carrenting.FragmentPages.VehiclesOwner.OwnerVehicleFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
 
@@ -33,19 +33,19 @@ public class OwnerMainActivity extends AppCompatActivity {
             switch (item.getItemId())
             {
                 case R.id.home:
-                    replaceFragment(new VehiclesOwner_HomeFragment());
+                    replaceFragment(new OwnerHomeFragment());
                     break;
                 case R.id.activity:
                     replaceFragment(new VehiclesOwner_ActivityFragment());
                     break;
                 case R.id.vehicle:
-                    replaceFragment(new VehiclesOwner_VehicleFragment());
+                    replaceFragment(new OwnerVehicleFragment());
                     break;
                 case R.id.message:
-                    replaceFragment(new VehiclesOwner_MessageFragment());
+                    replaceFragment(new OwnerMessageFragment());
                     break;
                 case R.id.setting:
-                    replaceFragment(new VehiclesOwner_SettingFragment());
+                    replaceFragment(new OwnerSettingFragment());
             }
             return true;
         });
