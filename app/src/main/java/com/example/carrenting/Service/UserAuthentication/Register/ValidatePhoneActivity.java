@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carrenting.ActivityPages.MainActivity;
+import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseException;
@@ -78,7 +78,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
                     verifyAuthentication(credential);
 
-                    Intent intent = new Intent(ValidatePhoneActivity.this, MainActivity.class);
+                    Intent intent = new Intent(ValidatePhoneActivity.this, CustomerMainActivity.class);
                     startActivity(intent);
                 }
             }

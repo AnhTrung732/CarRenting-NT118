@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.carrenting">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -22,9 +21,6 @@
             android:theme="@style/Theme.CarRenting.NoActionBar"
             android:exported="false"/>
         <activity
-            android:name=".ActivityPages.MainActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity
             android:name=".Service.UserAuthentication.LoginActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
@@ -40,6 +36,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActivityPages.OwnerMainActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
+        <activity
+            android:name=".ActivityPages.CustomerMainActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar" />
     </application>
 
 </manifest>
