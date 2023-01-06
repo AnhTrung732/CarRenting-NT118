@@ -80,6 +80,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(ValidatePhoneActivity.this, CustomerMainActivity.class);
                     startActivity(intent);
+                    finishAffinity();
                 }
             }
         });

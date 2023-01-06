@@ -1,4 +1,4 @@
-package com.example.carrenting.FragmentPages.VehiclesOwner;
+package com.example.carrenting.FragmentPages.Owner;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.carrenting.R;
 
-public class VehiclesOwner_HomeFragment extends Fragment {
+public class OwnerHomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -19,7 +19,7 @@ public class VehiclesOwner_HomeFragment extends Fragment {
         return inflater.inflate(R.layout.owner_fragment_home, container, false);
     }
 
-    public static class VehiclesProvider_ActivityFragment extends Fragment {
+    public static class Owner_ActivityFragment extends Fragment {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,

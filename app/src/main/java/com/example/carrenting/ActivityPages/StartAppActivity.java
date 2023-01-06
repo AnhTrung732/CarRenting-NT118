@@ -36,8 +36,7 @@ public class StartAppActivity extends AppCompatActivity {
         btn_startApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartAppActivity.this, LoginActivity.class);
-                startActivity(intent);
+                nextActivity();
             }
         });
 
@@ -45,19 +44,17 @@ public class StartAppActivity extends AppCompatActivity {
 
     private void nextActivity() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-//        if (user == null){
-//            //Chưa login
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//        }
-//        else
-//        {
-//            // Da login
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
+        if (user == null){
+            //Chưa login
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            // Da login
+            Intent intent = new Intent(this, CustomerMainActivity.class);
+            startActivity(intent);
+        }
 
     }
 }
