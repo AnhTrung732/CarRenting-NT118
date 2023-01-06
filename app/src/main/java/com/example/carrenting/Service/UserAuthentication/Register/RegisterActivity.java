@@ -2,6 +2,7 @@ package com.example.carrenting.Service.UserAuthentication.Register;
 
 import static androidx.fragment.app.FragmentManager.TAG;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     private FirebaseAuth mAuth;
     private Validator validator;
 
+    private ProgressDialog progressDialog;
     Boolean isValid = true;
     @Override
     public void onValidationSucceeded() {
@@ -79,6 +81,8 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         edtTxtPasswordAgain = findViewById(R.id.edtTxtPasswordAgain);
         btnSignUp = findViewById(R.id.btnSendCode);
 
+        progressDialog = new ProgressDialog(this);
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +114,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         String strEmail = edtTxtEmail.getText().toString().trim();
         String strPassword = edtTxtPassword.getText().toString().trim();
         Log.d(strEmail,strPassword);
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
