@@ -18,8 +18,10 @@ public class OwnerHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.owner_fragment_home, container, false);
     }
-    
-    public static class OwnerActivityFragment extends Fragment {
+
+
+    public static class Owner_ActivityFragment extends Fragment {
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
