@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarRenting"
         tools:targetApi="31">
+
         <activity
             android:name=".PayMentInforActivity"
             android:exported="false">

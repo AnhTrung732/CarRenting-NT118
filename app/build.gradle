@@ -75,4 +75,8 @@ dependencies {
     //Circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+
+    implementation 'com.github.momo-wallet:mobile-sdk:1.0.7'
+
+
 }

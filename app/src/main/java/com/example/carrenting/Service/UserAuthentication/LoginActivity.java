@@ -1,11 +1,13 @@
 package com.example.carrenting.Service.UserAuthentication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtSignUp;
     private Button btn_signIn;
     private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -36,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         edtTxt_email = findViewById(R.id.edtTxt_email);
         edtTxt_password = findViewById(R.id.edtText_password);
         btn_signIn = findViewById(R.id.btn_signIn);
+        progressDialog = new ProgressDialog(this);
 
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
             return;
         }
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

@@ -1,13 +1,18 @@
 package com.example.carrenting.ActivityPages;
 
-import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -16,18 +21,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.example.carrenting.FragmentPages.Customer.ActivityFragment;
 import com.example.carrenting.FragmentPages.Customer.HomeFragment;
 import com.example.carrenting.FragmentPages.Customer.MessageFragment;
 import com.example.carrenting.FragmentPages.Customer.SettingFragment;
-import com.example.carrenting.FragmentPages.Customer.UserFragment;
-import com.example.carrenting.FragmentPages.Customer.UserInfor.ChangeUserInforActivity;
-import com.example.carrenting.FragmentPages.Customer.UserInfor.PayMentInforActivity;
-import com.example.carrenting.FragmentPages.Customer.UserInfor.RegisterBeOwnerActivity;
+import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
 import com.example.carrenting.R;
-import com.example.carrenting.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class CustomerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,11 +42,16 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private static final int FRAGMENT_MESSAGE = 2;
     private static final int FRAGMENT_SETTING = 3;
 
+    private static final int FRAGMENT_MY_PROFILE = 4;
+
 
     private int mCurrentFragment = FRAGMENT_HOME;
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+
+    private ImageView imgAvatar;
+    private TextView tvName, tvEmail;
 
     private BottomNavigationView mbottomNavigationView;
 
@@ -50,6 +60,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Bottom Navigation
 
         mbottomNavigationView = findViewById(R.id.bottomNavigationView);
         mbottomNavigationView.setBackground(null);
@@ -99,7 +110,13 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         mNavigationView.setCheckedItem(R.id.nav_home);
         mbottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         setTitleToolbar();
+
+        initUI();
+        showUserInformation();
     }
+
+
+    // Tiến hành từng trang
 
     private void openHomeFragment() {
         if (mCurrentFragment != FRAGMENT_HOME)
@@ -129,13 +146,25 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             mCurrentFragment = FRAGMENT_SETTING;
         }
     }
+    private void openMyProfileFragment() {
+        if (mCurrentFragment != FRAGMENT_MY_PROFILE)
+        {
+            replaceFragment(new MyProfileFragment());
+            mCurrentFragment = FRAGMENT_MY_PROFILE;
+        }
+    }
+    // Hàm thay trang
+
     private void replaceFragment(Fragment fragment)
     {
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout_customer, fragment);
         fragmentTransaction.commit();
     }
+
+    //Nếu từng phần tử side navigation được chọn
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -164,18 +193,46 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         }
         else if (id == R.id.nav_infor)
         {
-            Intent intent = new Intent(CustomerMainActivity.this, ChangeUserInforActivity.class);
-            startActivity(intent);
+
+            openMyProfileFragment();
+            mbottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         }
         else if (id == R.id.nav_sign_owner)
         {
-            Intent intent = new Intent(CustomerMainActivity.this, RegisterBeOwnerActivity.class);
-            startActivity(intent);
+
         }
         else if (id == R.id.nav_payment_infor)
         {
-            Intent intent = new Intent(CustomerMainActivity.this, PayMentInforActivity.class);
-            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_sign_out)
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Bạn muốn đăng xuất tài khoản ?");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Có",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            FirebaseAuth.getInstance().signOut();
+                            Intent intent = new Intent(CustomerMainActivity.this, StartAppActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "Không",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
         }
 
         setTitleToolbar();
@@ -183,6 +240,9 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    // Đặt tên toolbar
 
     private void setTitleToolbar() {
         String title = "";
@@ -199,10 +259,45 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             case FRAGMENT_SETTING:
                 title = getString(R.string.nav_setting);
                 break;
+
+            case FRAGMENT_MY_PROFILE:
+                title = getString(R.string.nav_infor);
+                break;
+
         }
         if (getSupportActionBar() != null)
         {
             getSupportActionBar().setTitle(title);
         }
     }
+
+    private void initUI() {
+        imgAvatar = mNavigationView.getHeaderView(0).findViewById(R.id.img_avatar);
+        tvName = mNavigationView.getHeaderView(0).findViewById(R.id.tv_name_header);
+        tvEmail = mNavigationView.getHeaderView(0).findViewById(R.id.tv_email_header);
+    }
+    private void showUserInformation() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null)
+        {
+            return;
+        }
+        String name = user.getDisplayName();
+        String email = user.getEmail();
+        Uri photoUrl = user.getPhotoUrl();
+
+        if (name == null)
+        {
+            tvName.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvName.setVisibility(View.VISIBLE);
+            tvName.setText(name);
+        }
+        tvEmail.setText(email);
+        Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
+
+    }
+
 }

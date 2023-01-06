@@ -56,5 +56,7 @@ public class StartAppActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        finish();
+
     }
 }
