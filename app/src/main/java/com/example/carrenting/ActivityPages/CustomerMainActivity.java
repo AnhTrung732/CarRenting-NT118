@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -32,6 +33,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
 public class CustomerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Side Navigation
@@ -41,6 +43,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private static final int FRAGMENT_SETTING = 3;
 
     private static final int FRAGMENT_MY_PROFILE = 4;
+
 
     private int mCurrentFragment = FRAGMENT_HOME;
 
@@ -58,6 +61,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.activity_main);
 
         // Bottom Navigation
+
         mbottomNavigationView = findViewById(R.id.bottomNavigationView);
         mbottomNavigationView.setBackground(null);
         mbottomNavigationView.setOnItemSelectedListener(item -> {
@@ -113,6 +117,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
 
 
     // Tiến hành từng trang
+
     private void openHomeFragment() {
         if (mCurrentFragment != FRAGMENT_HOME)
         {
@@ -149,6 +154,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         }
     }
     // Hàm thay trang
+
     private void replaceFragment(Fragment fragment)
     {
 
@@ -159,6 +165,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     }
 
     //Nếu từng phần tử side navigation được chọn
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -186,6 +193,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         }
         else if (id == R.id.nav_infor)
         {
+
             openMyProfileFragment();
             mbottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         }
@@ -224,6 +232,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
 
             AlertDialog alert11 = builder1.create();
             alert11.show();
+
         }
 
         setTitleToolbar();
@@ -232,7 +241,9 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         return true;
     }
 
+
     // Đặt tên toolbar
+
     private void setTitleToolbar() {
         String title = "";
         switch (mCurrentFragment) {
@@ -248,15 +259,18 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             case FRAGMENT_SETTING:
                 title = getString(R.string.nav_setting);
                 break;
+
             case FRAGMENT_MY_PROFILE:
                 title = getString(R.string.nav_infor);
                 break;
+
         }
         if (getSupportActionBar() != null)
         {
             getSupportActionBar().setTitle(title);
         }
     }
+
     private void initUI() {
         imgAvatar = mNavigationView.getHeaderView(0).findViewById(R.id.img_avatar);
         tvName = mNavigationView.getHeaderView(0).findViewById(R.id.tv_name_header);
@@ -285,4 +299,5 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
 
     }
+
 }

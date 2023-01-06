@@ -26,8 +26,10 @@
             <item android:id="@+id/nav_payment_infor"
                 android:title="@string/nav_payment_infor"/>
 
+
             <item android:id="@+id/nav_sign_out"
                 android:title="@string/nav_sign_out"/>
+
         </menu>
     </item>
 </menu>
