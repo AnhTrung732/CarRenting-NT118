@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.carrenting.ActivityPages.CustomerMainActivity;
+import com.example.carrenting.ActivityPages.Customer_MainActivity;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, Customer_MainActivity.class);
                     startActivity(intent);
                 }
                 else{
