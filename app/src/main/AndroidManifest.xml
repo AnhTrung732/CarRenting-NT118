@@ -17,13 +17,18 @@
         android:theme="@style/Theme.CarRenting"
         tools:targetApi="31" >
         <activity
-            android:name=".Owner_MainActivity"
-            android:exported="false"
+            android:name=".ActivityPages.Owner_MainActivity"
+
             android:label="@string/title_activity_owner_main"
             android:theme="@style/Theme.CarRenting.NoActionBar" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".ActivityPages.Customer_MainActivity"
@@ -31,7 +36,6 @@
             android:theme="@style/Theme.CarRenting.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

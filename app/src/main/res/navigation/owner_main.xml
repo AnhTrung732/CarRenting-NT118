@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/owner_main"
-    app:startDestination="@id/owner_HomeFragment2">
+    app:startDestination="@id/home">
     <fragment
-        android:id="@+id/owner_HomeFragment2"
+        android:id="@+id/home"
         android:name="com.example.carrenting.FragmentPages.Owner.Owner_HomeFragment"
         android:label="owner_fragment_home"
         tools:layout="@layout/owner_fragment_home" />
     <fragment
-        android:id="@+id/owner_ActivityFragment2"
+        android:id="@+id/activity"
         android:name="com.example.carrenting.FragmentPages.Owner.Owner_ActivityFragment"
         android:label="owner_fragment_activity"
         tools:layout="@layout/owner_fragment_activity" />
     <fragment
-        android:id="@+id/owner_BankingFragment"
+        android:id="@+id/banking"
         android:name="com.example.carrenting.FragmentPages.Owner.Owner_BankingFragment"
         android:label="owner_fragment_banking"
         tools:layout="@layout/owner_fragment_banking" />
     <fragment
-        android:id="@+id/owner_MessageFragment"
+        android:id="@+id/message"
         android:name="com.example.carrenting.FragmentPages.Owner.Owner_MessageFragment"
         android:label="owner_fragment_message"
         tools:layout="@layout/owner_fragment_message" />
     <fragment
-        android:id="@+id/owner_SettingFragment"
+        android:id="@+id/setting"
         android:name="com.example.carrenting.FragmentPages.Owner.Owner_SettingFragment"
         android:label="owner_fragment_setting"
         tools:layout="@layout/owner_fragment_setting" />
