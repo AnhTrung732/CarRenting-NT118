@@ -102,7 +102,8 @@
         android:textColor="@color/sky"
         android:textColorHint="@color/sky"
         app:layout_constraintEnd_toEndOf="@+id/edtTxtPhone"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtPhone"
+        tools:ignore="HardcodedText,TextFields" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtTxtPasswordLayout"

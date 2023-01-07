@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentPages.Owner.Owner_ActivityFragment">
+    tools:context=".FragmentPages.Owner.Owner_VehicleFragment">
     <TextView
         android:id="@+id/tv_title"
-        android:text="HOẠT ĐỘNG"
+        android:text="QUẢN LÝ XE"
         android:textStyle="bold"
         android:textSize="40sp"
         android:textColor="@color/sunset"
@@ -18,42 +18,23 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         tools:ignore="HardcodedText,MissingConstraints" />
-    <LinearLayout
-        android:id="@+id/linear_history"
-        android:orientation="horizontal"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:text="Thêm"
         app:layout_constraintTop_toTopOf="@+id/tv_title"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        android:background="@drawable/blue_round_button"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_history"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            tools:ignore="InefficientWeight" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="5"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="normal"
-            android:text="Lịch sử" />
-    </LinearLayout>
+        android:layout_marginEnd="35dp"
+        tools:ignore="HardcodedText,InefficientWeight,MissingConstraints" />
 
     <Button
-        android:id="@+id/btn_wait"
+        android:id="@+id/btn_vehicle_list"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:text="Đang chờ"
+        android:text="DANH SÁCH"
         android:textSize="18sp"
         android:background="@drawable/blue_round_border"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -62,10 +43,10 @@
         android:layout_marginStart="15dp"
         tools:ignore="HardcodedText,MissingConstraints" />
     <Button
-        android:id="@+id/btn_rate"
+        android:id="@+id/btn_location"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:text="Đánh giá"
+        android:text= "VỊ TRÍ"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,11 +61,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wait"
+        app:layout_constraintTop_toBottomOf="@+id/btn_vehicle_list"
         android:layout_marginTop="25dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         tools:ignore="MissingConstraints">
     </androidx.recyclerview.widget.RecyclerView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

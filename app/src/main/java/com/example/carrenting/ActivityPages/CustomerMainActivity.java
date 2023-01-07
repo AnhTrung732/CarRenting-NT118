@@ -15,7 +15,7 @@ import com.example.carrenting.FragmentPages.Customer.Customer_SettingFragment;
 import com.example.carrenting.R;
 import com.example.carrenting.databinding.ActivityMainBinding;
 
-public class Customer_MainActivity extends AppCompatActivity {
+public class CustomerMainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     @SuppressLint("NonConstantResourceId")
     @Override

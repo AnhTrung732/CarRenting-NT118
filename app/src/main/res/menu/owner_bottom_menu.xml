@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="Vehicle"
         android:icon="@drawable/ic_home"
         tools:ignore="HardcodedText" />
     <item
@@ -14,8 +14,8 @@
         tools:ignore="HardcodedText" />
 
     <item
-        android:id="@+id/vehicle"
-        android:title="Vehicle"
+        android:id="@+id/banking"
+        android:title="Banking"
         android:icon="@drawable/ic_user"
         tools:ignore="HardcodedText" />
 
