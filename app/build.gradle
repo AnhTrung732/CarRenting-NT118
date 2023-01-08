@@ -103,4 +103,13 @@ dependencies {
     //Google Location
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
+
+    // Maps utils (required for custom markers)
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+
+    // Google Maps Services (needed for directions)
+    implementation 'com.google.maps:google-maps-services:0.2.9'
+    implementation 'org.slf4j:slf4j-nop:1.7.25'
+
 }
+apply plugin: 'com.google.gms.google-services'

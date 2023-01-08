@@ -1,5 +1,7 @@
 package com.example.carrenting.Service.Map;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,16 +28,21 @@ import com.example.carrenting.Model.Chatroom;
 import com.example.carrenting.Model.User;
 
 import com.example.carrenting.Model.UserClient;
+import com.example.carrenting.Model.UserLocation;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -62,8 +70,10 @@ public class ChatroomActivity extends AppCompatActivity implements
     private ArrayList<ChatMessage> mMessages = new ArrayList<>();
     private Set<String> mMessageIds = new HashSet<>();
     private ArrayList<User> mUserList = new ArrayList<>();
-    private UserListFragment mUserListFragment;
-    private UserClient mUserClient;
+    private ArrayList<UserLocation> mUserLocations = new ArrayList<>();
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
@@ -76,14 +86,18 @@ public class ChatroomActivity extends AppCompatActivity implements
 
         findViewById(R.id.checkmark).setOnClickListener(this);
 
-        mUserClient = new UserClient();
+
         mDb = FirebaseFirestore.getInstance();
 
 
         getIncomingIntent();
         initChatroomRecyclerView();
         getChatroomUsers();
+
     }
+
+
+
 
     private void getChatMessages(){
 
@@ -145,6 +159,7 @@ public class ChatroomActivity extends AppCompatActivity implements
                             for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                                 User user = doc.toObject(User.class);
                                 mUserList.add(user);
+                                getUserLocation(user);
                             }
 
                             Log.d(TAG, "onEvent: user list size: " + mUserList.size());
@@ -152,6 +167,27 @@ public class ChatroomActivity extends AppCompatActivity implements
                     }
                 });
     }
+
+    private void getUserLocation(User user){
+        DocumentReference locationsRef = mDb
+                .collection(getString(R.string.collection_user_locations))
+                .document(user.getUser_id());
+
+        locationsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                if(task.isSuccessful()){
+                    if(task.getResult().toObject(UserLocation.class) != null){
+
+                        mUserLocations.add(task.getResult().toObject(UserLocation.class));
+                    }
+                }
+            }
+        });
+
+    }
+
 
     private void initChatroomRecyclerView(){
         mChatMessageRecyclerAdapter = new ChatMessageRecyclerAdapter(mMessages, new ArrayList<User>(), this);
@@ -198,7 +234,7 @@ public class ChatroomActivity extends AppCompatActivity implements
             newChatMessage.setMessage(message);
             newChatMessage.setMessage_id(newMessageDoc.getId());
 
-            User user = ((UserClient) getApplicationContext()).getUser();
+            User user = ((UserClient) this.getApplicationContext()).getUser();
             Log.d(TAG, "insertNewMessage: retrieved user client: " + user.toString());
             newChatMessage.setUser(user);
 
@@ -226,6 +262,7 @@ public class ChatroomActivity extends AppCompatActivity implements
         UserListFragment fragment = UserListFragment.newInstance();
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(getString(R.string.intent_user_list), mUserList);
+        bundle.putParcelableArrayList(getString(R.string.intent_user_locations), mUserLocations);
         fragment.setArguments(bundle);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -267,7 +304,7 @@ public class ChatroomActivity extends AppCompatActivity implements
                 .collection(getString(R.string.collection_chatroom_user_list))
                 .document(FirebaseAuth.getInstance().getUid());
 
-        User user = mUserClient.getUser();
+        User user = ((UserClient) getApplicationContext()).getUser();
         joinChatroomRef.set(user); // Don't care about listening for completion.
     }
 
