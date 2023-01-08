@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentPages.Owner.Owner_BankingFragment">
+
+    <View
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/sky"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_banking_account"
+        tools:ignore="MissingConstraints,UnknownId" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_name"
+        android:text="TÊN NHÀ CUNG CẤP"
+        tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/sunflower"
+        android:padding="25dp"/>
+    <TextView
+        android:id="@+id/tv_banking_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,RtlSymmetry"
+        android:text="Số tài khoản"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        android:paddingLeft="25dp"
+        android:paddingTop="25dp"
+        android:textSize="20sp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/sunflower"/>
+
+    <LinearLayout
+        android:id="@+id/layout_money"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/view_title"
+        android:background="@drawable/yellow_line"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_weight="6"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="wrap_content"
+            android:text="Số dư khả dụng:"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/sky"
+            tools:ignore="HardcodedText,InefficientWeight,MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_waiting_money"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_money"
+        android:background="@drawable/yellow_line"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_waiting_mone"
+            android:layout_weight="6"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="wrap_content"
+            android:text="Số dư chờ duyệt:"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/sky"
+            tools:ignore="HardcodedText,InefficientWeight,MissingConstraints" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

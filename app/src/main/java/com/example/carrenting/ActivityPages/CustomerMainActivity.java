@@ -29,10 +29,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
-import com.example.carrenting.FragmentPages.Customer.ActivityFragment;
-import com.example.carrenting.FragmentPages.Customer.HomeFragment;
-import com.example.carrenting.FragmentPages.Customer.MessageFragment;
-import com.example.carrenting.FragmentPages.Customer.SettingFragment;
+
+import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
+import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
+import com.example.carrenting.FragmentPages.Customer.CustomerMessageFragment;
+import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
 import com.example.carrenting.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -105,13 +106,13 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             switch (item.getItemId())
             {
                 case R.id.home:
-                    replaceFragment(new HomeFragment());
+                    replaceFragment(new CustomerHomeFragment());
                     mNavigationView.setCheckedItem(R.id.nav_home);
                     mCurrentFragment = FRAGMENT_HOME;
 
                     break;
                 case R.id.activity:
-                    replaceFragment(new ActivityFragment());
+                    replaceFragment(new CustomerActivityFragment());
                     mNavigationView.setCheckedItem(R.id.nav_activity);
                     mCurrentFragment = FRAGMENT_ACTIVITY;
                     break;
@@ -119,12 +120,12 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                     replaceFragment(new UserFragment());
                     break;*/
                 case R.id.message:
-                    replaceFragment(new MessageFragment());
+                    replaceFragment(new CustomerMessageFragment());
                     mNavigationView.setCheckedItem(R.id.nav_message);
                     mCurrentFragment = FRAGMENT_MESSAGE;
                     break;
                 case R.id.setting:
-                    replaceFragment(new SettingFragment());
+                    replaceFragment(new CustomerSettingFragment());
                     mNavigationView.setCheckedItem(R.id.nav_setting);
                     mCurrentFragment = FRAGMENT_SETTING;
             }
@@ -143,7 +144,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         mNavigationView.setNavigationItemSelectedListener(this);
 
         //
-        replaceFragment(new HomeFragment());
+        replaceFragment(new CustomerHomeFragment());
         mNavigationView.setCheckedItem(R.id.nav_home);
         mbottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         setTitleToolbar();
@@ -158,28 +159,28 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private void openHomeFragment() {
         if (mCurrentFragment != FRAGMENT_HOME)
         {
-            replaceFragment(new HomeFragment());
+            replaceFragment(new CustomerHomeFragment());
             mCurrentFragment = FRAGMENT_HOME;
         }
     }
     private void openActivityFragment() {
         if (mCurrentFragment != FRAGMENT_ACTIVITY)
         {
-            replaceFragment(new ActivityFragment());
+            replaceFragment(new CustomerActivityFragment());
             mCurrentFragment = FRAGMENT_ACTIVITY;
         }
     }
     private void openMessageFragment() {
         if (mCurrentFragment != FRAGMENT_MESSAGE)
         {
-            replaceFragment(new MessageFragment());
+            replaceFragment(new CustomerMessageFragment());
             mCurrentFragment = FRAGMENT_MESSAGE;
         }
     }
     private void openSettingFragment() {
         if (mCurrentFragment != FRAGMENT_SETTING)
         {
-            replaceFragment(new SettingFragment());
+            replaceFragment(new CustomerSettingFragment());
             mCurrentFragment = FRAGMENT_SETTING;
         }
     }
