@@ -2,13 +2,20 @@ package com.example.carrenting.ActivityPages;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -33,9 +40,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+
 
 public class CustomerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final int MY_REQUEST_CODE = 10;
     //Side Navigation
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_ACTIVITY = 1;
@@ -45,6 +55,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private static final int FRAGMENT_MY_PROFILE = 4;
 
 
+
     private int mCurrentFragment = FRAGMENT_HOME;
 
     private DrawerLayout mDrawerLayout;
@@ -52,8 +63,34 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
 
     private ImageView imgAvatar;
     private TextView tvName, tvEmail;
+    final private MyProfileFragment myProfileFragment = new MyProfileFragment();
 
     private BottomNavigationView mbottomNavigationView;
+
+
+    final private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK)
+                    {
+                        Intent intent = result.getData();
+                        if (intent == null)
+                        {
+                            return;
+                        }
+                        Uri uri = intent.getData();
+                        myProfileFragment.setUri(uri);
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            myProfileFragment.setBitmapImageView(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +186,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private void openMyProfileFragment() {
         if (mCurrentFragment != FRAGMENT_MY_PROFILE)
         {
-            replaceFragment(new MyProfileFragment());
+            replaceFragment(myProfileFragment);
             mCurrentFragment = FRAGMENT_MY_PROFILE;
         }
     }
@@ -276,7 +313,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         tvName = mNavigationView.getHeaderView(0).findViewById(R.id.tv_name_header);
         tvEmail = mNavigationView.getHeaderView(0).findViewById(R.id.tv_email_header);
     }
-    private void showUserInformation() {
+    public void showUserInformation() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null)
         {
@@ -299,5 +336,25 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MY_REQUEST_CODE)
+        {
+            if (grantResults.length >  0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                openGallery();
+            }
+
+        }
+    }
+    public void openGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        mActivityResultLauncher.launch(Intent.createChooser(intent, "Select Picture"));
+    }
+
 
 }
