@@ -1,7 +1,7 @@
 package com.example.carrenting.Model;
 
+
 import android.app.Application;
-import android.content.Context;
 
 import com.example.carrenting.Model.User;
 
