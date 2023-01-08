@@ -27,6 +27,10 @@
         </activity>
         <activity
             android:name=".ActivityPages.CustomerMainActivity"
+            android:theme="@style/Theme.CarRenting.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Service.UserAuthentication.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.CarRenting.NoActionBar">
             <intent-filter>
@@ -34,9 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Service.UserAuthentication.LoginActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
+
         <activity
             android:name=".Service.UserAuthentication.RegisterActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
