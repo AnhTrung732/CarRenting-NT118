@@ -3,4 +3,7 @@
     <dimen name="buttonSize">@dimen/_35sdp</dimen>
     <dimen name="widthLarge">@dimen/_231sdp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>
