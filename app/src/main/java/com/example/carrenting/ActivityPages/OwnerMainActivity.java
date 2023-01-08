@@ -1,61 +1,37 @@
 package com.example.carrenting.ActivityPages;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import com.example.carrenting.FragmentPages.Customer.HomeFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerHomeFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerMessageFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerSettingFragment;
-import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.carrenting.R;
-import com.example.carrenting.databinding.ActivityMainBinding;
+import com.example.carrenting.databinding.OwnerActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OwnerMainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
-    @SuppressLint("NonConstantResourceId")
+
+    private OwnerActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        binding = OwnerActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new HomeFragment());
-        binding.bottomNavigationView.setBackground(null);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.vehicle, R.id.activity, R.id.banking, R.id.message, R.id.setting)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_owner_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
+    }
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId())
-            {
-                case R.id.home:
-                    replaceFragment(new OwnerHomeFragment());
-                    break;
-                case R.id.activity:
-                    replaceFragment(new OwnerActivityFragment());
-                    break;
-                case R.id.vehicle:
-                    replaceFragment(new OwnerVehicleFragment());
-                    break;
-                case R.id.message:
-                    replaceFragment(new OwnerMessageFragment());
-                    break;
-                case R.id.setting:
-                    replaceFragment(new OwnerSettingFragment());
-            }
-            return true;
-        });
-    }
-    private void replaceFragment(Fragment fragment)
-    {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout_vehicle_owner, fragment);
-        fragmentTransaction.commit();
-    }
 }

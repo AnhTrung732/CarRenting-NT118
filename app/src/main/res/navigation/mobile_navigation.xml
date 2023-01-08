@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/vehicle">
+
+    <fragment
+        android:id="@+id/vehicle"
+        android:name="com.example.carrenting.FragmentPages.Owner.ui.Vehicle.VehicleFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/activity"
+        android:name="com.example.carrenting.FragmentPages.Owner.ui.Activity.AcitivityFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/banking"
+        android:name="com.example.carrenting.FragmentPages.Owner.ui.Banking.BankingFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/message"
+        android:name="com.example.carrenting.FragmentPages.Owner.ui.Message.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.example.carrenting.FragmentPages.Owner.ui.Setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
