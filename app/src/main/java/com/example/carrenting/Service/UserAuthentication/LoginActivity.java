@@ -2,6 +2,7 @@ package com.example.carrenting.Service.UserAuthentication;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +38,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtTxt_email, edtTxt_password;
     private TextView txtSignUp;
     private Button btn_signIn;
+    private TextView tvForgotPassword;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -53,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         edtTxt_email = findViewById(R.id.edtTxt_email);
         edtTxt_password = findViewById(R.id.edtText_password);
         btn_signIn = findViewById(R.id.btn_signIn);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
         progressDialog = new ProgressDialog(this);
 
         btn_signIn.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +70,21 @@ public class LoginActivity extends AppCompatActivity {
                 nextRegister();
             }
         });
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                forgotPassword();
+            }
+        });
         setupFirebaseAuth();
         hideSoftKeyboard();
+    }
+
+    private void forgotPassword() {
+        progressDialog.show();
+        Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+        startActivity(intent);
+        progressDialog.dismiss();
     }
 
     @Override
@@ -153,6 +169,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
                     startActivity(intent);
+                    finishAffinity();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Đăng nhập không thành công", Toast.LENGTH_LONG).show();

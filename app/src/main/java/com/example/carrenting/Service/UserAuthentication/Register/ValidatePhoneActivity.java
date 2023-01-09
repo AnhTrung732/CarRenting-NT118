@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
+import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
 import com.example.carrenting.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseException;
@@ -57,7 +58,10 @@ public class ValidatePhoneActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        phoneNumber = "+84" + phoneNumber;
+        if (!phoneNumber.startsWith("+84"))
+        {
+            phoneNumber = "+84" + phoneNumber;
+        }
         Toast.makeText(this,phoneNumber,Toast.LENGTH_LONG).show();
         btnSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +82,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
                     verifyAuthentication(credential);
 
-                    Intent intent = new Intent(ValidatePhoneActivity.this, CustomerMainActivity.class);
+                    Intent intent = new Intent(ValidatePhoneActivity.this, MyProfileFragment.class);
                     startActivity(intent);
                     finishAffinity();
                 }

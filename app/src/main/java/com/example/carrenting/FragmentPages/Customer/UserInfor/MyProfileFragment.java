@@ -27,6 +27,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
+import com.example.carrenting.Service.UserAuthentication.Register.ValidatePhoneActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -88,6 +90,8 @@ public class MyProfileFragment extends Fragment {
         }
 
         String strFullname = dataName.getText().toString().trim();
+        String strEmail = dataEmail.getText().toString().trim();
+        String strPhone = dataPhone.getText().toString().trim();
         progressDialog.show();
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -106,6 +110,20 @@ public class MyProfileFragment extends Fragment {
                         }
                     }
                 });
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        firebaseUser.updateEmail(strEmail)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User email address updated.");
+                        }
+                    }
+                });
+        Intent intent = new Intent(getActivity(), ValidatePhoneActivity.class);
+        intent.putExtra("phone", strPhone);
+        startActivity(intent);
 
     }
 
