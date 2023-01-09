@@ -1,8 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/constraintLayout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/_5sdp"
+    tools:context=".ActivityPages.AddVehicle">
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_line">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:text="Thêm mới xe"
+                    android:textColor="@color/sky"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Tên xe"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+                <TextView
+                    android:id="@+id/tv_seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Số chỗ"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_name"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_seats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_seats" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Giá"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_seats"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+                <TextView
+                    android:id="@+id/tv_owner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Chủ xe"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_price"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_owner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_price"
+                    app:layout_constraintStart_toStartOf="@+id/et_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_owner" />
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Biển số xe"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_owner"
+                    app:layout_constraintTop_toBottomOf="@+id/et_owner"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_number"
+                    tools:ignore="TextFields" />
+
+                <TextView
+                    android:id="@+id/tv_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="URL ảnh"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_number"
+                    app:layout_constraintTop_toBottomOf="@+id/et_number"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/sky"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_number"
+                    app:layout_constraintStart_toStartOf="@+id/et_number"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_image" />
+
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Thêm"
+                    app:layout_constraintEnd_toEndOf="@+id/et_number"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:background="@drawable/blue_round_button"
+                    app:layout_constraintStart_toStartOf="@+id/et_number"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_load"
+                    tools:ignore="HardcodedText" />
+
+                <CheckBox
+                    android:id="@+id/cb_availability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:buttonTint="@color/sky"
+                    android:text="Available"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/et_image"
+                    app:layout_constraintTop_toBottomOf="@+id/et_image"
+                    tools:ignore="HardcodedText" />
+                >
+
+                <ImageView
+                    android:id="@+id/img_view"
+                    android:layout_width="0dp"
+                    android:layout_height="235dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/yellow_line"
+                    app:layout_constraintEnd_toEndOf="@+id/et_image"
+                    app:layout_constraintStart_toStartOf="@+id/et_image"
+                    app:layout_constraintTop_toBottomOf="@+id/cb_availability"
+                    tools:ignore="ContentDescription" />
+
+                <Button
+                    android:id="@+id/btn_load"
+                    android:layout_width="87dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Load"
+                    android:background="@drawable/blue_round_button"
+                    app:layout_constraintStart_toStartOf="@+id/img_view"
+                    app:layout_constraintTop_toBottomOf="@+id/img_view"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
