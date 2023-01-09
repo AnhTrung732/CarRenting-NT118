@@ -10,12 +10,17 @@ public class User implements Parcelable{
     private String username;
     private String avatar;
 
-    public User(String email, String user_id, String username, String avatar) {
-        this.email = email;
-        this.user_id = user_id;
-        this.username = username;
-        this.avatar = avatar;
-    }
+    private String driverLicense;
+    private String expiry;
+    private String dateOfBirth;
+
+    private String phoneNumber;
+
+    private String street;
+    private String city;
+    private String postalCode;
+
+    private String password;
 
     public User() {
 
@@ -76,6 +81,85 @@ public class User implements Parcelable{
         this.username = username;
     }
 
+    public String getDriverLicense() {
+        return driverLicense;
+    }
+
+    public void setDriverLicense(String driverLicense) {
+        this.driverLicense = driverLicense;
+    }
+
+    public String getExpiry() {
+        return expiry;
+    }
+
+    public void setExpiry(String expiry) {
+        this.expiry = expiry;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public User(String email, String user_id, String username, String avatar, String driverLicense, String expiry, String dateOfBirth, String phoneNumber, String street, String city, String postalCode) {
+        this.email = email;
+        this.user_id = user_id;
+        this.username = username;
+        this.avatar = avatar;
+        this.driverLicense = driverLicense;
+        this.expiry = expiry;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -83,6 +167,7 @@ public class User implements Parcelable{
                 ", user_id='" + user_id + '\'' +
                 ", username='" + username + '\'' +
                 ", avatar='" + avatar + '\'' +
+
                 '}';
     }
 
@@ -97,6 +182,13 @@ public class User implements Parcelable{
         dest.writeString(user_id);
         dest.writeString(username);
         dest.writeString(avatar);
+        dest.writeString(driverLicense);
+        dest.writeString(expiry);
+        dest.writeString(dateOfBirth);
+        dest.writeString(phoneNumber);
+        dest.writeString(street);
+        dest.writeString(city);
+        dest.writeString(postalCode);
     }
 }
 
