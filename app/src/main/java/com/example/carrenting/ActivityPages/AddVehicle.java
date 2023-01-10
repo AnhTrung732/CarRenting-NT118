@@ -36,7 +36,7 @@ import java.util.Map;
 public class AddVehicle extends AppCompatActivity {
 
     private String documentId;
-    private Uri mImageURI = null;
+    private Uri mImageURI;
     private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number, vehicle_img;
     private CheckBox vehicle_available;
     private Button btnAdd;
@@ -51,7 +51,6 @@ public class AddVehicle extends AppCompatActivity {
         vehicle_price = findViewById(R.id.et_price);
         vehicle_owner = findViewById(R.id.et_owner);
         vehicle_number = findViewById(R.id.et_number);
-        /*        vehicle_img = findViewById(R.id.et_image);*/
         vehicle_available = findViewById(R.id.cb_availability);
         vehicle_imgView = findViewById(R.id.img_view);
         btnAdd = findViewById(R.id.btn_add);
