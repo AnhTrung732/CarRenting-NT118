@@ -1,9 +1,16 @@
 package com.example.carrenting.ActivityPages;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,18 +23,53 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddVehicle extends AppCompatActivity {
 
-    private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number, vehicle_img;
+    private String documentId, path;
+    private Uri mImageURI, downloadUri;
+    private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number;
     private CheckBox vehicle_available;
-    private Button btnAdd, btnLoad;
+    private Button btnAdd;
     private ImageView vehicle_imgView;
     private FirebaseFirestore dtb_vehicle;
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    private DocumentReference documentRef;
+
+    ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
+            , new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if (result != null){
+                        mImageURI = result;
+                        vehicle_imgView.setImageURI(result);
+                    }
+                    uploadImage();
+                }
+            });
+
+    private void findViewByIds() {
+        vehicle_name = findViewById(R.id.et_name);
+        vehicle_seats = findViewById(R.id.et_seats);
+        vehicle_price = findViewById(R.id.et_price);
+        vehicle_owner = findViewById(R.id.et_owner);
+        vehicle_number = findViewById(R.id.et_number);
+        vehicle_available = findViewById(R.id.cb_availability);
+        vehicle_imgView = findViewById(R.id.img_view);
+        btnAdd = findViewById(R.id.btn_add);
+    }
+
 
 
     @Override
@@ -35,74 +77,118 @@ public class AddVehicle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
         findViewByIds();
-
-        btnLoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!vehicle_img.getText().toString().equals("")){
-                    Picasso.get().load(vehicle_img.getText().toString()).into(vehicle_imgView);
-                }
-            }
-        });
-
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                dtb_vehicle = FirebaseFirestore.getInstance();
-
-                String vehicleName = vehicle_name.getText().toString();
-                String vehicleSeats = vehicle_seats.getText().toString();
-                String vehiclePrice = vehicle_price.getText().toString();
-                String vehicleOwner = vehicle_owner.getText().toString();
-                String vehicleNumber = vehicle_number.getText().toString();
-                String vehicleImg = vehicle_img.getText().toString();
-                String availability;
-                if(vehicle_available.isChecked())
+            public void onClick(View view) {
+                if(FullFill() == true)
                 {
-                    availability = "available";
+                    addVehicle();
                 }
                 else
                 {
-                    availability = "unavailable";
+                    Toast.makeText(AddVehicle.this, "Vui lòng nhập đủ các thông tin", Toast.LENGTH_LONG).show();
                 }
-                Map<String,Object> vehicle = new HashMap<>( );
-                vehicle.put("vehicle_name", vehicleName);
-                vehicle.put("vehicle_seats", vehicleSeats);
-                vehicle.put("vehicle_price", vehiclePrice);
-                vehicle.put("vehicle_owner", vehicleOwner);
-                vehicle.put("vehicle_number", vehicleNumber);
-                vehicle.put("vehicle_imageURL", vehicleImg);
-                vehicle.put("vehicle_available", availability);
+            }
+        });
 
-
-                dtb_vehicle.collection("Vehicle")
-                        .add(vehicle)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(AddVehicle.this, "Thêm phương tiện mới thành công", Toast.LENGTH_SHORT);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddVehicle.this, "Thêm phương tiện mới không thành công", Toast.LENGTH_SHORT);
-                            }
-                        });
+        vehicle_imgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImagesFromGallery.launch("image/*");
             }
         });
     }
 
-    public void findViewByIds()
-    {
-        vehicle_name = findViewById(R.id.et_name);
-        vehicle_seats = findViewById(R.id.et_seats);
-        vehicle_price = findViewById(R.id.et_price);
-        vehicle_owner = findViewById(R.id.et_owner);
-        vehicle_number = findViewById(R.id.et_number);
-        vehicle_img = findViewById(R.id.et_image);
-        vehicle_available = findViewById(R.id.cb_availability);
-        vehicle_imgView = findViewById(R.id.img_view);
-        btnAdd = findViewById(R.id.btn_add);
-        btnLoad = findViewById(R.id.btn_load);
+    private void addVehicle() {
+        dtb_vehicle = FirebaseFirestore.getInstance();
+
+        String availability = vehicle_available.isChecked() ? "available" : "unavailable";
+
+        Map<String, Object> vehicle = new HashMap<>();
+        vehicle.put("name", vehicle_name.getText().toString());
+        vehicle.put("seats", vehicle_seats.getText().toString());
+        vehicle.put("price", vehicle_price.getText().toString());
+        vehicle.put("owner", vehicle_owner.getText().toString());
+        vehicle.put("number", vehicle_number.getText().toString());
+/*        vehicle.put("imageURL", "null");*/
+        vehicle.put("availability", availability);
+        dtb_vehicle.collection("Vehicle")
+                .add(vehicle)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        documentId = documentReference.getId();
+                        documentRef = dtb_vehicle.document("Vehicle/" + documentId);
+                        Toast.makeText(AddVehicle.this, "Vehicle added successfully", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Error adding document", e);
+                    }
+                });
     }
+
+    private boolean FullFill() {
+        String[] arr = new String[]{vehicle_name.getText().toString(), vehicle_owner.getText().toString(),
+                vehicle_number.getText().toString(), vehicle_price.getText().toString(), vehicle_seats.getText().toString()};
+        for (String s : arr) {
+            if (s.isEmpty()) {
+                toast("Vui lòng nhập đầy đủ thông tin");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void toast(String txt){
+        Toast toast = Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    private void uploadImage() {
+        // Check if an image was selected
+        if (vehicle_imgView.getDrawable() == null) {
+            Toast.makeText(AddVehicle.this, "Please select an image", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Get image from ImageView as bitmap
+        Bitmap bitmap = ((BitmapDrawable) vehicle_imgView.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        // Initialize storage reference
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+
+        // Create a reference to "VehicleImages/documentId.jpg"
+        StorageReference imageRef = storageRef.child("VehicleImages/" + documentId + ".jpg");
+
+        // Upload image
+        UploadTask uploadTask = imageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.w("Error uploading image", exception);
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // Get the public URL of the uploaded image
+                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        downloadUri = uri;
+                        documentRef.update("imageURL", downloadUri.toString());
+                    }
+                });
+
+                Toast.makeText(AddVehicle.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
