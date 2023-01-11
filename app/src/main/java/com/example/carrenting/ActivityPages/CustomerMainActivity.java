@@ -1,22 +1,31 @@
 package com.example.carrenting.ActivityPages;
 
+import static java.lang.Integer.parseInt;
+
+import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 
@@ -46,7 +55,9 @@ import java.io.IOException;
 
 public class CustomerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final int MY_REQUEST_CODE = 10;
+    public static final int AVATAR_REQUEST_CODE = 99;
+    public static final int FRONT_CICARD_REQUEST_CODE = 100;
+    public static final int BEHIND_CICARD_REQUEST_CODE = 101;
     //Side Navigation
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_ACTIVITY = 1;
@@ -67,31 +78,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     final private MyProfileFragment myProfileFragment = new MyProfileFragment();
 
     private BottomNavigationView mbottomNavigationView;
-
-
-    final private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK)
-                    {
-                        Intent intent = result.getData();
-                        if (intent == null)
-                        {
-                            return;
-                        }
-                        Uri uri = intent.getData();
-                        myProfileFragment.setUri(uri);
-                        try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            myProfileFragment.setBitmapImageView(bitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -337,19 +323,24 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
 
     }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    public void onClickRequestPermission(int CodeRequest)
     {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_REQUEST_CODE)
-        {
-            if (grantResults.length >  0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
-                openGallery();
-            }
 
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+            this.openGallery();
+            return;
+        }
+        if (this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        {
+            this.openGallery();
+        }
+        else
+        {
+            String [] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+            this.requestPermissions(permission, CodeRequest);
         }
     }
+
     public void openGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -357,5 +348,44 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         mActivityResultLauncher.launch(Intent.createChooser(intent, "Select Picture"));
     }
 
+    final private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK)
+                    {
+                        Intent intent = result.getData();
+                        if (intent == null)
+                        {
+                            return;
+                        }
+                        Uri uri = intent.getData();
+                        if (myProfileFragment.getFlag_image() == 0)
+                        {
+                            myProfileFragment.setAvatarUri(uri);
+                            Glide.with(CustomerMainActivity.this).load(uri).error(R.drawable.ic_avatar_default).into(imgAvatar);
+                            Glide.with(CustomerMainActivity.this).load(uri).into(myProfileFragment.getImgAvatar());
+                        }
+                        else if (myProfileFragment.getFlag_image() == 1)
+                        {
+                            myProfileFragment.setFrontUri(uri);
+                            Glide.with(CustomerMainActivity.this).load(uri).into(myProfileFragment.getIvFrontCiCard());
+                        }
+                        else if (myProfileFragment.getFlag_image() == 2)
+                        {
+                            myProfileFragment.setBehindUri(uri);
+                            Glide.with(CustomerMainActivity.this).load(uri).into(myProfileFragment.getIvBehindCiCard());
+                        }
+                    }
+                }
+            }
+    );
+
+    public String getFileExtension(Uri uri)
+    {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
 
 }

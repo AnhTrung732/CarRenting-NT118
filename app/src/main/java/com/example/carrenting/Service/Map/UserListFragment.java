@@ -253,7 +253,7 @@ public class UserListFragment extends Fragment implements
 
                     int avatar = R.drawable.cartman_cop; // set the default avatar
                     try{
-                        avatar = Integer.parseInt(userLocation.getUser().getAvatar());
+                        avatar = Integer.parseInt(userLocation.getUser().getAvatarURL());
                     }catch (NumberFormatException e){
                         Log.d(TAG, "addMapMarkers: no avatar for " + userLocation.getUser().getUsername() + ", setting default.");
                     }
