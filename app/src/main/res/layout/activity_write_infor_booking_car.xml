@@ -137,7 +137,7 @@
                                     android:layout_marginLeft="8dp"/>
 
                                 <EditText
-                                    android:id="@+id/pickupDate"
+                                    android:id="@+id/edt_NgayNhan"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -164,7 +164,7 @@
                                     app:srcCompat="@drawable/img_2" />
 
                                 <EditText
-                                    android:id="@+id/pickupTime"
+                                    android:id="@+id/edt_GioNhan"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -245,7 +245,7 @@
                                     app:srcCompat="@drawable/calendar_icon" />
 
                                 <EditText
-                                    android:id="@+id/returnDate"
+                                    android:id="@+id/edt_NgayTra"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -272,7 +272,7 @@
                                     app:srcCompat="@drawable/img_2" />
 
                                 <EditText
-                                    android:id="@+id/returnTime"
+                                    android:id="@+id/edt_GioTra"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -288,264 +288,13 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/personalInfoText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rental_time">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="10dp">
-
-                        <View
-                            android:id="@+id/divider1"
-                            android:layout_width="0dp"
-                            android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_driver" />
-
-                        <TextView
-                            android:id="@+id/tv_driver"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
-
-                            android:text="Driver Details"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
 
-
-                        <LinearLayout
-                            android:id="@+id/firstNameLastNameLayout"
-                            android:layout_width="0dp"
-
-
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="24dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-
-                            app:layout_constraintTop_toBottomOf="@+id/tv_driver"
-                            >
-
-                            <LinearLayout
-                                android:id="@+id/firstNameLayout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/firstNameText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-
-                                    android:paddingLeft="4dp"
-                                    android:text="First Name" />
-
-                                <EditText
-                                    android:id="@+id/firstName"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ems="10"
-                                    android:inputType="textPersonName"
-                                    android:textColor="@color/colorPrimary"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lastNameLayout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/lastNameText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-
-                                    android:paddingLeft="4dp"
-                                    android:text="Last Name" />
-
-                                <EditText
-                                    android:id="@+id/lastName"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ems="10"
-                                    android:inputType="textPersonName"
-                                    android:textColor="@color/colorPrimary"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/emailLayout"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="@+id/firstNameLastNameLayout"
-                            app:layout_constraintStart_toStartOf="@+id/firstNameLastNameLayout"
-                            app:layout_constraintTop_toBottomOf="@+id/firstNameLastNameLayout">
-
-                            <TextView
-                                android:id="@+id/emailText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:paddingLeft="4dp"
-                                android:text="Email" />
-
-                            <EditText
-                                android:id="@+id/email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:inputType="textEmailAddress"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/phoneNumberLayout"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="@+id/emailLayout"
-                            app:layout_constraintStart_toStartOf="@+id/emailLayout"
-                            app:layout_constraintTop_toBottomOf="@+id/emailLayout">
-
-                            <TextView
-                                android:id="@+id/phoneNumberText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:paddingLeft="4dp"
-                                android:text="Phone Number" />
-
-                            <EditText
-                                android:id="@+id/phoneNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:inputType="phone"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/ThongTinXe"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="24dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="10dp">
-
-                        <View
-                            android:id="@+id/v_ThongTinXe"
-                            android:layout_width="0dp"
-                            android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_ThongTinXe" />
-
-                        <TextView
-                            android:id="@+id/tv_ThongTinXe"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
-                            android:text="Thông tin xe"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:id="@+id/layout_ThongTinXe"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginLeft="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintTop_toBottomOf="@id/tv_ThongTinXe"
-                            app:layout_constraintLeft_toLeftOf="parent">
-                            <TextView
-                                android:id="@+id/tv_HangXe"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:text="Hãng xe"
-                                android:textColor="#00E676" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/layout_Gia"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginLeft="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintTop_toBottomOf="@id/layout_ThongTinXe"
-                            app:layout_constraintLeft_toLeftOf="parent">
-                            <TextView
-                                android:id="@+id/tv_Gia"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:text="Giá"
-                                android:textColor="#00E676" />
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_requestbooking"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="300dp"
                     android:background="@drawable/round_card"
 
                     android:text="Gủi yêu cầu thuê xe"
@@ -556,7 +305,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ThongTinXe" />
+                    app:layout_constraintTop_toBottomOf="@+id/rental_time" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
