@@ -2,7 +2,7 @@ package com.example.carrenting.Model;
 
 
 
-import com.example.carrenting.Service.ZaloPay.AppInfo;
+import com.example.carrenting.Service.ZaloPay.Constant.AppInfo;
 import com.example.carrenting.Service.ZaloPay.Helper.Helpers;
 import com.example.carrenting.Service.ZaloPay.HttpProvider;
 
