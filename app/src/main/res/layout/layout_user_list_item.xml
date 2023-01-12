@@ -19,6 +19,6 @@
         android:textColor="@color/Grey"
         app:layout_constraintTop_toBottomOf="@+id/username"
         android:layout_marginTop="5dp"
-        android:id="@+id/email"/>
+        android:id="@+id/edtCity"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

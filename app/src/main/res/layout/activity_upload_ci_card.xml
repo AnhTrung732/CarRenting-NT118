@@ -44,8 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
 
-        <View
-            android:id="@+id/view7"
+        <ImageView
+            android:id="@+id/vCardFront"
             android:layout_width="@dimen/_271sdp"
             android:layout_height="@dimen/_130sdp"
             android:background="@color/white"
@@ -56,19 +56,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/illCardFront"
+            android:layout_width="207dp"
+            android:layout_height="88dp"
             android:layout_marginBottom="@dimen/_28sdp"
             android:background="@color/white"
             android:contentDescription="@string/ci_card_upload_image"
             app:layout_constraintBottom_toBottomOf="@+id/view5"
-            app:layout_constraintEnd_toEndOf="@+id/view7"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="@+id/vCardFront"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/view5"
-            app:layout_constraintTop_toTopOf="@+id/view7"
-            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintTop_toTopOf="@+id/vCardFront"
+            app:layout_constraintVertical_bias="0.777"
             app:srcCompat="@drawable/cicard_upload_icon2" />
 
         <TextView
@@ -104,8 +104,8 @@
             app:layout_constraintStart_toStartOf="@+id/view8"
             app:layout_constraintTop_toTopOf="@+id/view8" />
 
-        <View
-            android:id="@+id/view11"
+        <ImageView
+            android:id="@+id/vCardBehind"
             android:layout_width="@dimen/_271sdp"
             android:layout_height="@dimen/_130sdp"
             android:background="@color/white"
@@ -114,48 +114,47 @@
             app:layout_constraintStart_toStartOf="@+id/view8"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_25sdp"
+        <ImageView
+            android:id="@+id/illCardBehind"
+            android:layout_width="220dp"
+            android:layout_height="86dp"
+            android:layout_marginTop="20dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/view8"
             app:layout_constraintEnd_toEndOf="@+id/view8"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="@+id/view8"
-            app:layout_constraintTop_toTopOf="@+id/view11"
-            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toTopOf="@+id/vCardBehind"
+            app:layout_constraintVertical_bias="0.186"
             app:srcCompat="@drawable/cicard_upload_icon2" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/imgBtnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="38dp"
             android:background="@color/sky"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/btnUpload"
             app:layout_constraintTop_toBottomOf="@+id/view8"
             app:srcCompat="@drawable/cicard_upload_icon3" />
 
-        <TextView
-            android:id="@+id/textView8"
+        <Button
+            android:id="@+id/btnUpload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_222sdp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="@dimen/_1sdp"
-            android:fontFamily="@font/inter_extrabold"
-            android:text="Next"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="70dp"
+            android:backgroundTint="@color/white"
+            android:text="Tải lên"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/imgBtnNext"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view8" />
+            app:layout_constraintTop_toBottomOf="@+id/vCardBehind" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

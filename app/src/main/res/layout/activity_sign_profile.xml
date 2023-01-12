@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_my_profile"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,7 +25,6 @@
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout_editor_absoluteX="-4dp"
@@ -36,77 +34,23 @@
                     android:id="@+id/img_avatar_profile"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/ic_avatar_default"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="16dp"
-                    tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/text2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="Số điện thoại *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile" />
-
-                <EditText
-                    android:id="@+id/edtPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="phone"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text2" />
-
-                <TextView
-                    android:id="@+id/text1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="Email *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
-
-                <EditText
-                    android:id="@+id/edtEmail"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text1" />
+                    app:layout_constraintTop_toBottomOf="@+id/registration" />
 
                 <TextView
                     android:id="@+id/firstNameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="144dp"
                     android:text="Tên người dùng *"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+                    app:layout_constraintTop_toBottomOf="@+id/registration" />
 
                 <EditText
                     android:id="@+id/edtUserName"
@@ -242,7 +186,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
-                    android:clickable="true"
                     android:ems="10"
                     android:enabled="false"
                     android:inputType="textPersonName"
@@ -263,68 +206,34 @@
                     app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
                     app:layout_constraintTop_toTopOf="@+id/edtBirthDate" />
 
-
-
-                <TextView
-                    android:id="@+id/text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Mặt trước CCCD *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/edtBirthDate" />
-
-                <ImageView
-                    android:id="@+id/ivFrontCiCard"
-                    android:layout_width="0dp"
-                    android:layout_height="235dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
-                    app:layout_constraintHorizontal_bias="0.476"
-                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
-                    app:layout_constraintTop_toBottomOf="@+id/text3"
-                    />
-                <TextView
-                    android:id="@+id/text4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Mặt sau CCCD *"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/ivFrontCiCard" />
-
-                <ImageView
-                    android:id="@+id/ivBehindCiCard"
-                    android:layout_width="0dp"
-                    android:layout_height="235dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
-                    app:layout_constraintHorizontal_bias="0.476"
-                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
-                    app:layout_constraintTop_toBottomOf="@+id/text4"
-                    />
-
                 <Button
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="60dp"
+                    android:layout_marginTop="56dp"
                     android:background="@drawable/round_button"
                     android:text="Cập nhật thông tin"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:fontFamily="@font/roboto_medium"
-                    app:layout_constraintEnd_toEndOf="@+id/ivBehindCiCard"
+                    app:layout_constraintEnd_toEndOf="@+id/edtBirthDate"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/ivBehindCiCard"
-                    app:layout_constraintTop_toBottomOf="@+id/ivBehindCiCard"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
-                    />
+                    app:layout_constraintStart_toStartOf="@+id/edtBirthDate"
+                    app:layout_constraintTop_toBottomOf="@+id/edtBirthDate" />
+
+                <TextView
+                    android:id="@+id/registration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="THÔNG TIN NGƯỜI DÙNG"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/nunito"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,14 +16,20 @@ import android.widget.Toast;
 
 import com.example.carrenting.ActivityPages.CustomerMainActivity;
 import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
+import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,6 +48,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     FirebaseAuth firebaseAuth;
+    private FirebaseFirestore mDb;
     PhoneAuthCredential phoneAuthCredential;
 
 
@@ -57,6 +64,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        mDb = FirebaseFirestore.getInstance();
 
         if (!phoneNumber.startsWith("+84"))
         {
@@ -82,7 +90,23 @@ public class ValidatePhoneActivity extends AppCompatActivity {
 
                     verifyAuthentication(credential);
 
-                    Intent intent = new Intent(ValidatePhoneActivity.this, MyProfileFragment.class);
+                    FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                            .build();
+                    mDb.setFirestoreSettings(settings);
+                    DocumentReference newUserRef = mDb
+                            .collection(getString(R.string.collection_users))
+                            .document(FirebaseAuth.getInstance().getUid());
+
+                    newUserRef.update("phoneNumber", phoneNumber).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(ValidatePhoneActivity.this, "Update phone number successful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+                    Intent intent = new Intent(ValidatePhoneActivity.this, SignProfileActivity.class);
                     startActivity(intent);
                     finishAffinity();
                 }
