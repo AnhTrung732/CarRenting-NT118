@@ -58,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
         progressDialog = new ProgressDialog(this);
 
+        overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
+
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
