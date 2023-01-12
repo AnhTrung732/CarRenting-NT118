@@ -33,7 +33,7 @@
                 tools:layout_editor_absoluteY="210dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_avatar_profile"
+                    android:id="@+id/img_avatar_profile_fragment"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_avatar_default"
@@ -51,7 +51,7 @@
                     android:text="Số điện thoại *"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/edtUserName"
-                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_avatar_profile_fragment" />
 
                 <EditText
                     android:id="@+id/edtPhone"
