@@ -53,7 +53,7 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
         public ViewHolder(View itemView, UserListRecyclerClickListener clickListener) {
             super(itemView);
             username = itemView.findViewById(R.id.username);
-            email = itemView.findViewById(R.id.email);
+            email = itemView.findViewById(R.id.edtCity);
 
             mClickListener = clickListener;
 

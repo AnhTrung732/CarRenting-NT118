@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_update_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mAvatarImage = findViewById(R.id.image_choose_avatar);
@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements
 
         int avatar = 0;
         try{
-            avatar = Integer.parseInt(((UserClient)getApplicationContext()).getUser().getAvatar());
+            avatar = Integer.parseInt(((UserClient)getApplicationContext()).getUser().getAvatarURL());
         }catch (NumberFormatException e){
             Log.e(TAG, "retrieveProfileImage: no avatar image. Setting default. " + e.getMessage() );
         }
@@ -114,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity implements
 
         // update the client and database
         User user = ((UserClient)getApplicationContext()).getUser();
-        user.setAvatar(String.valueOf(resource));
+        user.setAvatarURL(String.valueOf(resource));
 
         FirebaseFirestore.getInstance()
                 .collection(getString(R.string.collection_users))

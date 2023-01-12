@@ -20,7 +20,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -73,12 +73,22 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database'
 
+    //Firebase storage
+    implementation 'com.google.firebase:firebase-storage'
+
+
     // Support multidex
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
     // Firebase firestore
     implementation 'com.google.firebase:firebase-firestore:17.0.4'
+
+    // Firebase Admin
+    // implementation 'com.google.firebase:firebase-admin:1.32.0'
+
+    // Google API Client
+    // implementation 'com.google.api-client:google-api-client:1.32.1'
 
     //responsive size
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
@@ -111,6 +121,9 @@ dependencies {
     // Google Maps Services (needed for directions)
     implementation 'com.google.maps:google-maps-services:0.2.9'
     implementation 'org.slf4j:slf4j-nop:1.7.25'
+
+    //ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     //ZaloPay
     implementation("com.squareup.okhttp3:okhttp:4.6.0")
