@@ -361,7 +361,7 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void bindingDataUser(User user) {
-        Glide.with(getActivity()).load(user.getAvatarURL()).error(R.drawable.ic_avatar_default).into(imgAvatar);
+
         edtUserName.setText(user.getUsername().toString().trim());
         edtPhone.setText(user.getPhoneNumber().toString().trim());
         edtEmail.setText(user.getEmail().toString().trim());
@@ -373,13 +373,13 @@ public class MyProfileFragment extends Fragment {
         mAvatarUri = Uri.parse(user.getAvatarURL());
         frontUri = Uri.parse(user.getCiCardFront());
         behindUri = Uri.parse(user.getCiCardBehind());
-
+        Glide.with(getActivity()).load(user.getAvatarURL()).error(R.drawable.ic_avatar_default).into(imgAvatar);
         Glide.with(getActivity()).load(user.getCiCardFront()).into(ivFrontCiCard);
         Glide.with(getActivity()).load(user.getCiCardBehind()).into(ivBehindCiCard);
     }
 
     private void initUI() {
-        imgAvatar = mView.findViewById(R.id.img_avatar_profile);
+        imgAvatar = mView.findViewById(R.id.img_avatar_profile_fragment);
         edtUserName = mView.findViewById(R.id.edtUserName);
         edtPhone = mView.findViewById(R.id.edtPhone);
         edtEmail = mView.findViewById(R.id.edtEmail);
