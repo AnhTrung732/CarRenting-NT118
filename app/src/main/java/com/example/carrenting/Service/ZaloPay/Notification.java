@@ -13,6 +13,5 @@ public class Notification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_notification);
 
-
     }
 }

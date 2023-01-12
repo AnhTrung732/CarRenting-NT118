@@ -31,6 +31,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        overridePendingTransition(R.anim.anim_in_left,R.anim.anim_out_right);
+
         edtEmailResign = findViewById(R.id.edtEmailResign);
         tvResendPassword = findViewById(R.id.tvResendPassword);
         btnReturn = findViewById(R.id.btnReturn);

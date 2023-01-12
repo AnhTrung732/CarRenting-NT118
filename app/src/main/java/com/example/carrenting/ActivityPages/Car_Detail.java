@@ -1,4 +1,4 @@
-package com.example.carrenting.Service.ZaloPay;
+package com.example.carrenting.ActivityPages;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.R;
+import com.example.carrenting.Service.ZaloPay.WriteInformationCheckout;
 
 
 public class Car_Detail extends AppCompatActivity {
@@ -17,13 +18,11 @@ public class Car_Detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_car);
 
-        overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
-
         btn_Chon=findViewById(R.id.btn_chon);
         btn_Chon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it1=new Intent(Car_Detail.this,WriteInformationCheckout.class);
+                Intent it1=new Intent(Car_Detail.this, WriteInformationCheckout.class);
             }
         });
     }
