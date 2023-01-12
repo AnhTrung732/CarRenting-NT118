@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.R;
@@ -27,8 +30,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
+import java.util.ArrayList;
+
 public class StartAppActivity extends AppCompatActivity {
     private Button btn_startApp;
+    ImageSlider imageSlider;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +48,16 @@ public class StartAppActivity extends AppCompatActivity {
 //                nextActivity();
 //            }
 //        }, 2000);
+
+
+        imageSlider = (ImageSlider) findViewById(R.id.imageView3);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.start_app_background, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.start_app_background_1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.start_app_background_2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.start_app_background_3, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.start_app_background_4, ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels);
 
         btn_startApp = findViewById(R.id.btn_startApp);
 
