@@ -1,4 +1,4 @@
-package com.example.carrenting.Service.ZaloPay;
+package com.example.carrenting.Service.Booking;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -11,7 +11,6 @@ import android.os.StrictMode;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +31,7 @@ import vn.zalopay.sdk.ZaloPaySDK;
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.listeners.PayOrderListener;
 
-public class ConfirmAndPayment extends AppCompatActivity {
+public class ConfirmAndPaymentActivity extends AppCompatActivity {
     AppCompatButton btn_payment, back ;
     TextView txtToken;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -109,13 +108,13 @@ public class ConfirmAndPayment extends AppCompatActivity {
                     }
 
                     String token = txtToken.getText().toString();
-                    ZaloPaySDK.getInstance().payOrder(ConfirmAndPayment.this, token, "demozpdk://app", new PayOrderListener() {
+                    ZaloPaySDK.getInstance().payOrder(ConfirmAndPaymentActivity.this, token, "demozpdk://app", new PayOrderListener() {
                         @Override
                         public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    new AlertDialog.Builder(ConfirmAndPayment.this)
+                                    new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
                                             .setTitle("Payment Success")
                                             .setMessage(String.format("TransactionId: %s - TransToken: %s", transactionId, transToken))
                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -132,7 +131,7 @@ public class ConfirmAndPayment extends AppCompatActivity {
 
                         @Override
                         public void onPaymentCanceled(String zpTransToken, String appTransID) {
-                            new AlertDialog.Builder(ConfirmAndPayment.this)
+                            new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
                                     .setTitle("User Cancel Payment")
                                     .setMessage(String.format("zpTransToken: %s \n", zpTransToken))
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -145,7 +144,7 @@ public class ConfirmAndPayment extends AppCompatActivity {
 
                         @Override
                         public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
-                            new AlertDialog.Builder(ConfirmAndPayment.this)
+                            new AlertDialog.Builder(ConfirmAndPaymentActivity.this)
                                     .setTitle("Payment Fail")
                                     .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), zpTransToken))
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
