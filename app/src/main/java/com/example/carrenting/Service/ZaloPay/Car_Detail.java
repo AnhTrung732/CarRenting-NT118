@@ -25,5 +25,4 @@ public class Car_Detail extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -337,8 +337,6 @@ public class MyProfileFragment extends Fragment {
 
     }
 
-
-
     private void setUserInformation()
     {
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -361,7 +359,6 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void bindingDataUser(User user) {
-
         edtUserName.setText(user.getUsername().toString().trim());
         edtPhone.setText(user.getPhoneNumber().toString().trim());
         edtEmail.setText(user.getEmail().toString().trim());
