@@ -141,6 +141,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                             user.setEmail(strEmail);
                             user.setUsername(strEmail.substring(0, strEmail.indexOf("@")));
                             user.setUser_id(FirebaseAuth.getInstance().getUid());
+                            user.setPassword(strPassword);
 
                             FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                                     .build();

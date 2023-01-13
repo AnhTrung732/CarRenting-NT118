@@ -1,5 +1,6 @@
 package com.example.carrenting.Model;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,10 +9,9 @@ public class User implements Parcelable{
     private String email;
     private String user_id;
     private String username;
-    private String avatar;
+    private String avatarURL;
 
     private String driverLicense;
-    private String expiry;
     private String dateOfBirth;
 
     private String phoneNumber;
@@ -22,6 +22,10 @@ public class User implements Parcelable{
 
     private String password;
 
+    private String ciCardFront;
+    private String ciCardBehind;
+
+
     public User() {
 
     }
@@ -30,7 +34,15 @@ public class User implements Parcelable{
         email = in.readString();
         user_id = in.readString();
         username = in.readString();
-        avatar = in.readString();
+        avatarURL = in.readString();
+        driverLicense = in.readString();
+        dateOfBirth = in.readString();
+        phoneNumber = in.readString();
+        street = in.readString();
+        city = in.readString();
+        postalCode = in.readString();
+        ciCardFront = in.readString();
+        ciCardBehind = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -45,12 +57,28 @@ public class User implements Parcelable{
         }
     };
 
-    public String getAvatar() {
-        return avatar;
+    public String getCiCardFront() {
+        return ciCardFront;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setCiCardFront(String ciCardFront) {
+        this.ciCardFront = ciCardFront;
+    }
+
+    public String getCiCardBehind() {
+        return ciCardBehind;
+    }
+
+    public void setCiCardBehind(String ciCardBehind) {
+        this.ciCardBehind = ciCardBehind;
+    }
+
+    public String getAvatarURL() {
+        return avatarURL;
+    }
+
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
     }
 
     public static Creator<User> getCREATOR() {
@@ -89,13 +117,6 @@ public class User implements Parcelable{
         this.driverLicense = driverLicense;
     }
 
-    public String getExpiry() {
-        return expiry;
-    }
-
-    public void setExpiry(String expiry) {
-        this.expiry = expiry;
-    }
 
     public String getDateOfBirth() {
         return dateOfBirth;
@@ -146,18 +167,20 @@ public class User implements Parcelable{
     }
 
 
-    public User(String email, String user_id, String username, String avatar, String driverLicense, String expiry, String dateOfBirth, String phoneNumber, String street, String city, String postalCode) {
+    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String street, String city, String postalCode, String password, String ciCardFront, String ciCardBehind) {
         this.email = email;
         this.user_id = user_id;
         this.username = username;
-        this.avatar = avatar;
+        this.avatarURL = avatarURL;
         this.driverLicense = driverLicense;
-        this.expiry = expiry;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.street = street;
         this.city = city;
         this.postalCode = postalCode;
+        this.password = password;
+        this.ciCardFront = ciCardFront;
+        this.ciCardBehind = ciCardBehind;
     }
 
     @Override
@@ -166,7 +189,7 @@ public class User implements Parcelable{
                 "email='" + email + '\'' +
                 ", user_id='" + user_id + '\'' +
                 ", username='" + username + '\'' +
-                ", avatar='" + avatar + '\'' +
+                ", avatar='" + avatarURL + '\'' +
 
                 '}';
     }
@@ -181,14 +204,15 @@ public class User implements Parcelable{
         dest.writeString(email);
         dest.writeString(user_id);
         dest.writeString(username);
-        dest.writeString(avatar);
+        dest.writeString(avatarURL);
         dest.writeString(driverLicense);
-        dest.writeString(expiry);
         dest.writeString(dateOfBirth);
         dest.writeString(phoneNumber);
         dest.writeString(street);
         dest.writeString(city);
         dest.writeString(postalCode);
+        dest.writeString(ciCardFront);
+        dest.writeString(ciCardBehind);
     }
 }
 
