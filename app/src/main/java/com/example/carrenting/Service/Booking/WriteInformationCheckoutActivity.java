@@ -1,4 +1,4 @@
-package com.example.carrenting.Service.ZaloPay;
+package com.example.carrenting.Service.Booking;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.R;
+import com.example.carrenting.Service.Notification.NotificationActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class WriteInformationCheckout extends AppCompatActivity {
+public class WriteInformationCheckoutActivity extends AppCompatActivity {
     Button btn_request, btn_back;
     TextView NgayNhan, NgayTra;
     TextView GioNhan, GioTra;
@@ -41,7 +42,7 @@ public class WriteInformationCheckout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent Writeinfor=new Intent(WriteInformationCheckout.this,Notification.class);
+                Intent Writeinfor=new Intent(WriteInformationCheckoutActivity.this, NotificationActivity.class);
                 startActivity(Writeinfor);
             }
         });
@@ -49,7 +50,7 @@ public class WriteInformationCheckout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent Back_DetailCar=new Intent(WriteInformationCheckout.this,Car_Detail.class);
+                Intent Back_DetailCar=new Intent(WriteInformationCheckoutActivity.this, CarDetailActivity.class);
                 startActivity(Back_DetailCar);
             }
         });

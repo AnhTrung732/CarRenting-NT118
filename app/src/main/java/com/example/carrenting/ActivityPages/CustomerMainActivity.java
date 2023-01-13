@@ -44,11 +44,19 @@ import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerMessageFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
+import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.io.IOException;
 
@@ -78,11 +86,16 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     final private MyProfileFragment myProfileFragment = new MyProfileFragment();
 
     private BottomNavigationView mbottomNavigationView;
+    private FirebaseFirestore mDb;
+    User mUser;
+    private CustomerMainActivity mMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mDb = FirebaseFirestore.getInstance();
+        mMainActivity = this;
 
         // Bottom Navigation
 
@@ -301,26 +314,41 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         tvEmail = mNavigationView.getHeaderView(0).findViewById(R.id.tv_email_header);
     }
     public void showUserInformation() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null)
-        {
-            return;
-        }
-        String name = user.getDisplayName();
-        String email = user.getEmail();
-        Uri photoUrl = user.getPhotoUrl();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .build();
+        mDb.setFirestoreSettings(settings);
+        DocumentReference newUserRef = mDb
+                .collection(getString(R.string.collection_users))
+                .document(FirebaseAuth.getInstance().getUid());
+        newUserRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                mUser = documentSnapshot.toObject(User.class);
+            }
+        }).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (mUser == null)
+                {
+                    return;
+                }
+                String name = mUser.getUsername();
+                String email = mUser.getEmail();
+                Uri photoUrl = Uri.parse(mUser.getAvatarURL());
 
-        if (name == null)
-        {
-            tvName.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvName.setVisibility(View.VISIBLE);
-            tvName.setText(name);
-        }
-        tvEmail.setText(email);
-        Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
+                if (name == null)
+                {
+                    tvName.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvName.setVisibility(View.VISIBLE);
+                    tvName.setText(name);
+                }
+                tvEmail.setText(email);
+                Glide.with(mMainActivity).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
+            }
+        });
 
     }
     public void onClickRequestPermission(int CodeRequest)

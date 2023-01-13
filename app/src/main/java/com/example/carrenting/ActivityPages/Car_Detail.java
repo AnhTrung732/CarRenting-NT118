@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.R;
-import com.example.carrenting.Service.ZaloPay.WriteInformationCheckout;
+import com.example.carrenting.Service.Booking.WriteInformationCheckoutActivity;
 
 
 public class Car_Detail extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class Car_Detail extends AppCompatActivity {
         btn_Chon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it1=new Intent(Car_Detail.this, WriteInformationCheckout.class);
+                Intent it1=new Intent(Car_Detail.this, WriteInformationCheckoutActivity.class);
             }
         });
     }

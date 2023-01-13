@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".Service.ZaloPay.ConfirmAndPayment">
+    tools:context=".Service.Booking.ConfirmAndPaymentActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -458,6 +458,18 @@
                     app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
                     app:layout_constraintStart_toStartOf="@+id/personalInfoText"
                     app:layout_constraintTop_toBottomOf="@+id/personalInfoText" />
+                <TextView
+                    android:id="@+id/txtToken"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:textColor="#4CAF50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
+                    app:layout_constraintStart_toStartOf="@+id/personalInfoText"
+                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"  />
 
 
 

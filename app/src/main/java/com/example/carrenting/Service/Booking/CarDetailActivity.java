@@ -1,4 +1,4 @@
-package com.example.carrenting.Service.ZaloPay;
+package com.example.carrenting.Service.Booking;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.carrenting.R;
 
 
-public class Car_Detail extends AppCompatActivity {
+public class CarDetailActivity extends AppCompatActivity {
     Button btn_Chon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class Car_Detail extends AppCompatActivity {
         btn_Chon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it1=new Intent(Car_Detail.this,WriteInformationCheckout.class);
+                Intent it1=new Intent(CarDetailActivity.this, WriteInformationCheckoutActivity.class);
             }
         });
     }
