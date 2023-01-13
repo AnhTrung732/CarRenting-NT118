@@ -56,6 +56,8 @@ public class StartAppActivity extends AppCompatActivity {
 
     private void nextActivity() {
 
+
+        //animation
         overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

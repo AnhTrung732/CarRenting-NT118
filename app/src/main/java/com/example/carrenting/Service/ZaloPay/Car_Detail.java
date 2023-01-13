@@ -16,7 +16,6 @@ public class Car_Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_car);
-
         overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
 
         btn_Chon=findViewById(R.id.btn_chon);
@@ -27,5 +26,4 @@ public class Car_Detail extends AppCompatActivity {
             }
         });
     }
-
 }
