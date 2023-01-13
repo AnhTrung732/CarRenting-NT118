@@ -131,9 +131,11 @@ dependencies {
     implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     //ZaloPay
-    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("commons-codec:commons-codec:1.14")
 
+    //Image Slideshow
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
