@@ -12,8 +12,6 @@ import com.example.carrenting.R;
 
 public class CustomerActivityFragment extends Fragment {
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
