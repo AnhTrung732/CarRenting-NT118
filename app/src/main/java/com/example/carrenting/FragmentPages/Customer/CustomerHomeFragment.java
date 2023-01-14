@@ -47,7 +47,6 @@ public class CustomerHomeFragment extends Fragment {
     FirebaseFirestore dtb_vehicle;
     ProgressDialog progressDialog;
 
-    private CardView btnMap;
     private View mView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,7 +68,7 @@ public class CustomerHomeFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
         EventChangeListener();
-        
+        progressDialog.dismiss();
         return  mView;
     }
 

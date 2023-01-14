@@ -31,7 +31,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddVehicle extends AppCompatActivity {
+public class AddVehicleActivity extends AppCompatActivity {
 
     private String documentId, path;
     private Uri mImageURI, downloadUri;
@@ -68,7 +68,6 @@ public class AddVehicle extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +82,7 @@ public class AddVehicle extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(AddVehicle.this, "Vui lòng nhập đủ các thông tin", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddVehicleActivity.this, "Vui lòng nhập đủ các thông tin", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -116,7 +115,7 @@ public class AddVehicle extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         documentId = documentReference.getId();
                         documentRef = dtb_vehicle.document("Vehicle/" + documentId);
-                        Toast.makeText(AddVehicle.this, "Vehicle added successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddVehicleActivity.this, "Vehicle added successfully", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -147,7 +146,7 @@ public class AddVehicle extends AppCompatActivity {
     private void uploadImage() {
         // Check if an image was selected
         if (vehicle_imgView.getDrawable() == null) {
-            Toast.makeText(AddVehicle.this, "Please select an image", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddVehicleActivity.this, "Please select an image", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -183,7 +182,7 @@ public class AddVehicle extends AppCompatActivity {
                     }
                 });
 
-                Toast.makeText(AddVehicle.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddVehicleActivity.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
             }
         });
     }
