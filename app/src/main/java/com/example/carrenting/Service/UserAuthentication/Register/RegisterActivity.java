@@ -2,6 +2,7 @@ package com.example.carrenting.Service.UserAuthentication.Register;
 
 import static androidx.fragment.app.FragmentManager.TAG;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -131,6 +132,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {

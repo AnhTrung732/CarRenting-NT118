@@ -15,7 +15,7 @@
         android:id="@+id/activity"
         android:name="com.example.carrenting.FragmentPages.Owner.ui.Activity.AcitivityFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/owner_fragment_activity" />
 
     <fragment
         android:id="@+id/banking"
