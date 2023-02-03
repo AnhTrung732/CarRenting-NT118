@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.carrenting.ActivityPages.OwnerMainActivity;
 import com.example.carrenting.R;
 
 public class CustomerSettingFragment extends Fragment {
@@ -26,9 +25,9 @@ public class CustomerSettingFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getActivity(), OwnerMainActivity.class);
+                /*Intent i = new Intent(getActivity(), OwnerMainActivity.class);
                 startActivity(i);
-                ((Activity) getActivity()).overridePendingTransition(0, 0);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);*/
             }
         });
         return view;

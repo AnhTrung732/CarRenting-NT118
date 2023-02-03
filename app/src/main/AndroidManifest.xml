@@ -76,9 +76,6 @@
             android:name=".Service.UserAuthentication.Register.RegisterActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".ActivityPages.OwnerMainActivity"
-            android:theme="@style/Theme.CarRenting.NoActionBar" />
-        <activity
             android:name=".ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <meta-data
