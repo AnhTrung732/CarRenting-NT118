@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="@dimen/_40sdp"
         >
 
         <androidx.recyclerview.widget.RecyclerView
@@ -19,19 +19,16 @@
 
 
         </androidx.recyclerview.widget.RecyclerView>
-
     </RelativeLayout>
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/grey_border_top">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_check_green_24dp"
@@ -47,7 +44,7 @@
             android:textSize="14sp"
             android:hint="new message..."
             android:textColor="@color/Black"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="@dimen/_5sdp"/>
 
 
     </RelativeLayout>

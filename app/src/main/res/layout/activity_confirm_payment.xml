@@ -32,7 +32,7 @@
 
                     android:text="XÁC NHẬN THÔNG TIN"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_20ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -44,34 +44,36 @@
 
                     android:text="ID:"
                     android:textColor="@color/Grey"
-                    android:textSize="20sp"
-
+                    android:textSize="@dimen/_20ssp"
                     app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
                     app:layout_constraintBottom_toTopOf="@id/img_car"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="130dp"
-                    />
+                    app:layout_constraintEnd_toStartOf="@+id/tv_id"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    tools:ignore="HardcodedText" />
+
                 <TextView
                     android:id="@+id/tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:text="id giao dich"
                     android:textColor="@color/Grey"
-                    android:textSize="20sp"
 
-                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
+                    android:textSize="@dimen/_20ssp"
                     app:layout_constraintBottom_toTopOf="@id/img_car"
-                    app:layout_constraintLeft_toRightOf="@+id/tv"
-                    android:layout_marginLeft="10dp"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
+                    tools:ignore="HardcodedText" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/back"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/ic_arrow_back"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -79,8 +81,8 @@
                 <ImageView
                     android:id="@+id/img_car"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_height="@dimen/_220sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
                     app:layout_constraintTop_toTopOf="@+id/tv_id"
                     app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -89,9 +91,9 @@
                     android:id="@+id/rental_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
 
                     app:cardBackgroundColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -102,14 +104,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="@dimen/_10sdp">
 
                         <View
                             android:id="@+id/divider"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@color/sky"
                             android:scrollbarThumbHorizontal="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -120,20 +122,20 @@
                             android:id="@+id/driverDetailText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
 
                             android:text="Thông tin nhà cung cấp"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/_18ssp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:layout_marginEnd="@dimen/_24sdp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/driverDetailText"
@@ -146,19 +148,20 @@
 
                                 <TextView
                                     android:id="@+id/nameText"
-                                    android:layout_width="50dp"
+                                    android:layout_width="@dimen/_50sdp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Name:" />
+                                    android:text="Name:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/name"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="Mr. Jenil Vekaria"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
 
                             </LinearLayout>
 
@@ -166,23 +169,25 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingTop="10dp">
+                                android:paddingTop="@dimen/_10sdp">
 
                                 <TextView
                                     android:id="@+id/emailText"
-                                    android:layout_width="50dp"
+                                    android:layout_width="@dimen/_50sdp"
                                     android:layout_height="wrap_content"
 
-                                    android:text="Email:" />
+                                    android:text="Email:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/email"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="jenilvekaria@yahoo.ca"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
 
                             </LinearLayout>
 
@@ -190,23 +195,25 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingTop="10dp">
+                                android:paddingTop="@dimen/_10sdp">
 
                                 <TextView
                                     android:id="@+id/phoneNumberText"
-                                    android:layout_width="50dp"
+                                    android:layout_width="@dimen/_50sdp"
                                     android:layout_height="wrap_content"
 
-                                    android:text="Phone:" />
+                                    android:text="Phone:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/phoneNumber"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="(416) 000 0000"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
 
                             </LinearLayout>
 
@@ -221,9 +228,9 @@
                     android:id="@+id/personalInfoText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
                     app:cardBackgroundColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -233,14 +240,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/vehicle_info_card"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="@dimen/_10sdp">
 
                         <View
                             android:id="@+id/divider1"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:background="@color/sky"
                             android:scrollbarThumbHorizontal="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -252,21 +259,22 @@
                             android:id="@+id/tv_InforCar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="@dimen/_24sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
 
                             android:text="Thông tin xe"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp"
+                            android:textSize="@dimen/_18ssp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="HardcodedText" />
 
                         <LinearLayout
                             android:id="@+id/linearLayout"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_24sdp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="@+id/divider1"
                             app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
@@ -276,7 +284,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:paddingBottom="5dp">
+                                android:paddingBottom="@dimen/_5sdp">
 
                                 <TextView
                                     android:id="@+id/tv_BrandCar"
@@ -285,102 +293,103 @@
 
                                     android:text="2020 Toyota Avalon"
                                     android:textColor="@color/colorPrimary"
-                                    android:textSize="18sp" />
+                                    android:textSize="@dimen/_18ssp"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/rateText"
-                                    android:layout_width="75dp"
+                                    android:layout_width="@dimen/_75sdp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Giá:" />
+                                    android:text="Giá:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/rate"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="100.000(VNĐ)/Ngày"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/totalDaysText"
-                                    android:layout_width="75dp"
+                                    android:layout_width="@dimen/_75sdp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Địa điểm:" />
+                                    android:text="Địa điểm:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/totalDays"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="Đà Lạt"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
 
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/pickupText"
-                                    android:layout_width="75dp"
+                                    android:layout_width="@dimen/_75sdp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Nhận xe:" />
+                                    android:text="Nhận xe:"
+                                    tools:ignore="HardcodedText" />
                                 <TextView
                                     android:id="@+id/pickup"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="11:00PM\t\tWeb, Dec 05"
                                     android:textColor="@color/colorPrimary"
                                     tools:layout_editor_absoluteX="125dp"
                                     tools:layout_editor_absoluteY="269dp"
-                                    />
+                                    tools:ignore="HardcodedText" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/dropoffText"
-                                    android:layout_width="75dp"
+                                    android:layout_width="@dimen/_75sdp"
                                     android:layout_height="wrap_content"
-
-                                    android:text="Trả xe:" />
+                                    android:text="Trả xe:"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/dropoff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
+                                    android:layout_marginStart="@dimen/_15sdp"
                                     android:text="03:00PM\t\tWeb, Dec 17"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorPrimary"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -388,8 +397,8 @@
                             android:id="@+id/divider2"
                             android:layout_width="0dp"
                             android:layout_height="0.3dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#707070"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:background="@color/sky"
                             android:scrollbarThumbHorizontal="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -399,8 +408,8 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_24sdp"
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
@@ -413,9 +422,9 @@
                                 android:orientation="horizontal">
 
                                 <LinearLayout
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginBottom="@dimen/_5sdp"
                                     android:layout_weight="1"
                                     android:orientation="vertical">
 
@@ -424,8 +433,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-
-                                        android:text="Tổng tiền cần thanh toán:" />
+                                        android:text="Tổng tiền cần thanh toán:"
+                                        tools:ignore="HardcodedText,NestedWeights" />
 
                                     <TextView
                                         android:id="@+id/totalCost"
@@ -435,7 +444,8 @@
 
                                         android:text="1.200.000 VNĐ"
                                         android:textColor="@color/sky"
-                                        android:textSize="24sp" />
+                                        android:textSize="@dimen/_24ssp"
+                                        tools:ignore="HardcodedText" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -447,32 +457,30 @@
                     android:id="@+id/btn_Payment"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
                     android:background="@drawable/round_card"
                     android:enabled="false"
                     android:text="XÁC NHẬN VÀ THANH TOÁN"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
                     app:layout_constraintStart_toStartOf="@+id/personalInfoText"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText" />
+                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"
+                    tools:ignore="HardcodedText" />
                 <TextView
                     android:id="@+id/txtToken"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:textColor="#4CAF50"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:textColor="@color/sunflower"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
                     app:layout_constraintStart_toStartOf="@+id/personalInfoText"
                     app:layout_constraintTop_toBottomOf="@+id/personalInfoText"  />
-
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

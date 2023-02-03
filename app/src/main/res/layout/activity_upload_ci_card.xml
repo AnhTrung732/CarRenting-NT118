@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/sky">
 
 
@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintEnd_toEndOf="@+id/view4"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4"
             app:srcCompat="@drawable/cicard_upload_icon1" />
@@ -40,7 +39,6 @@
             android:layout_height="@dimen/_150sdp"
             android:layout_marginTop="@dimen/_24sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -51,15 +49,13 @@
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/view5"
             app:layout_constraintEnd_toEndOf="@+id/view5"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/view5"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
         <ImageView
             android:id="@+id/illCardFront"
-            android:layout_width="207dp"
-            android:layout_height="88dp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_marginBottom="@dimen/_28sdp"
             android:background="@color/white"
             android:contentDescription="@string/ci_card_upload_image"
