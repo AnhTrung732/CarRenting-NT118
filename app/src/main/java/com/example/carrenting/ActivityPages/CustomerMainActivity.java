@@ -3,29 +3,24 @@ package com.example.carrenting.ActivityPages;
 import static java.lang.Integer.parseInt;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 
@@ -41,7 +36,7 @@ import com.bumptech.glide.Glide;
 
 import com.example.carrenting.FragmentPages.Customer.CustomerActivityFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerHomeFragment;
-import com.example.carrenting.FragmentPages.Customer.CustomerMessageFragment;
+import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
 import com.example.carrenting.Model.User;
@@ -52,13 +47,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
-
-import java.io.IOException;
 
 
 public class CustomerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -119,7 +111,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                     replaceFragment(new UserFragment());
                     break;*/
                 case R.id.message:
-                    replaceFragment(new CustomerMessageFragment());
+                    replaceFragment(new CustomerNotificationFragment());
                     mNavigationView.setCheckedItem(R.id.nav_message);
                     mCurrentFragment = FRAGMENT_MESSAGE;
                     break;
@@ -172,7 +164,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private void openMessageFragment() {
         if (mCurrentFragment != FRAGMENT_MESSAGE)
         {
-            replaceFragment(new CustomerMessageFragment());
+            replaceFragment(new CustomerNotificationFragment());
             mCurrentFragment = FRAGMENT_MESSAGE;
         }
     }
