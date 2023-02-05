@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carrenting.FragmentPages.Customer.CustomerNotificationFragment;
 import com.example.carrenting.R;
 
 import java.text.SimpleDateFormat;
@@ -41,7 +42,7 @@ public class WriteInformationCheckoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent Writeinfor=new Intent(WriteInformationCheckoutActivity.this, NotificationActivity.class);
+                Intent Writeinfor=new Intent(WriteInformationCheckoutActivity.this, CustomerNotificationFragment.class);
                 startActivity(Writeinfor);
             }
         });
