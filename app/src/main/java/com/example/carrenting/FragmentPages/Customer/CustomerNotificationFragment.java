@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 import com.example.carrenting.R;
 
 
-public class CustomerMessageFragment extends Fragment {
+public class CustomerNotificationFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.customer_fragment_message, container, false);
+        return inflater.inflate(R.layout.customer_fragment_notification, container, false);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Notification.NotificationActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

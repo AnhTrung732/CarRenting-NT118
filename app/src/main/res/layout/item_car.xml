@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textSize="23sp"
         android:textColor="@color/sky"
         tools:text="Tên nhà cung cấp" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:paddingLeft="16dp">
+        android:paddingStart="16dp">
 
         <TextView
             android:id="@+id/bookingIDText"
@@ -33,24 +33,25 @@
             android:layout_height="wrap_content"
 
             android:text="ID:"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/bookingID"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
-            android:paddingLeft="15dp"
+            android:layout_marginStart="15dp"
             android:text="1234"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_pickupDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
+        android:layout_marginStart="16dp"
         android:paddingTop="8dp">
 
         <TextView
@@ -58,17 +59,18 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Nhận xe" />
+            android:text="Nhận xe"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/pickupDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
-            android:paddingLeft="15dp"
+            android:layout_marginStart="15dp"
             android:text="07:33 p.m January, 1 2020"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
+       android:layout_marginStart="16dp"
         android:paddingTop="8dp">
 
         <TextView
@@ -84,24 +86,26 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Trả xe" />
+            android:text="Trả xe"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/returnDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
-            android:paddingLeft="15dp"
+            android:layout_marginStart="15dp"
             android:text="07:33 p.m January, 10 2020"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_TrangThai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
+        android:layout_marginStart="16dp"
         android:paddingTop="8dp">
 
         <TextView
@@ -109,24 +113,25 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Trạng thái:" />
+            android:text="Trạng thái:"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tv_Trangthai"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
-            android:paddingLeft="15dp"
+            android:layout_marginStart="15dp"
             android:text="Nhà cung cấp đã xác nhận"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
+        android:layout_marginStart="16dp"
         android:paddingTop="8dp">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -134,11 +139,11 @@
             android:layout_height="35dp"
             android:id="@+id/btn_chon"
             android:text="Tiếp tục giao dịch"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:background="@drawable/round_card"
-            android:layout_marginLeft="200dp"
+            android:layout_marginStart="200dp"
             android:layout_marginBottom="5dp"
-            ></androidx.appcompat.widget.AppCompatButton>
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 
