@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainapp"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.carrenting.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/activity"
+        android:name="com.example.carrenting.ActivityPages.MainActivity"
+        android:label="fragment_activity"
+        tools:layout="@layout/fragment_activity" />
+    <fragment
+        android:id="@+id/person"
+        android:name="com.example.carrenting.Person"
+        android:label="fragment_person"
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/meassage"
+        android:name="com.example.carrenting.Meassage"
+        android:label="fragment_meassage"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.example.carrenting.Setting"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
