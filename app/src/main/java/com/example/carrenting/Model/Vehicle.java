@@ -142,5 +142,4 @@ public class Vehicle {
     public void setVehicle_imageURL(String vehicle_imageURL) {
         this.vehicle_imageURL = vehicle_imageURL;
     }
-
 }

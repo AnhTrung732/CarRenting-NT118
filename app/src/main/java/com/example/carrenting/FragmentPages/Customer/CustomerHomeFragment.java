@@ -70,7 +70,6 @@ public class CustomerHomeFragment extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Đang lấy dữ liệu...");
         progressDialog.show();
-
         recyclerView = mView.findViewById(R.id.vehicle_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

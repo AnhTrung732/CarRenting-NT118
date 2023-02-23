@@ -220,7 +220,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             openMessageFragment();
             mbottomNavigationView.getMenu().findItem(R.id.message).setChecked(true);
         }
-
         else if (id == R.id.nav_infor)
         {
 
@@ -386,7 +385,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                     tvName.setText(name);
                 }
                 tvEmail.setText(email);
-
             }
         });
 
