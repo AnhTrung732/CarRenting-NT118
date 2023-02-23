@@ -46,6 +46,7 @@ import com.example.carrenting.FragmentPages.Customer.CustomerSettingFragment;
 import com.example.carrenting.FragmentPages.Customer.UserInfor.MyProfileFragment;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -70,10 +71,9 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_ACTIVITY = 1;
     private static final int FRAGMENT_MESSAGE = 2;
-    private static final int FRAGMENT_SETTING = 3;
 
     private static final int FRAGMENT_MY_PROFILE = 4;
-
+    private static final int FRAGMENT_OWNER_STATE = 5;
 
 
     private int mCurrentFragment = FRAGMENT_HOME;
@@ -123,10 +123,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                     mNavigationView.setCheckedItem(R.id.nav_message);
                     mCurrentFragment = FRAGMENT_MESSAGE;
                     break;
-                case R.id.setting:
-                    replaceFragment(new CustomerSettingFragment());
-                    mNavigationView.setCheckedItem(R.id.nav_setting);
-                    mCurrentFragment = FRAGMENT_SETTING;
             }
             setTitleToolbar();
             return true;
@@ -176,18 +172,19 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             mCurrentFragment = FRAGMENT_MESSAGE;
         }
     }
-    private void openSettingFragment() {
-        if (mCurrentFragment != FRAGMENT_SETTING)
-        {
-            replaceFragment(new CustomerSettingFragment());
-            mCurrentFragment = FRAGMENT_SETTING;
-        }
-    }
     private void openMyProfileFragment() {
         if (mCurrentFragment != FRAGMENT_MY_PROFILE)
         {
             replaceFragment(myProfileFragment);
             mCurrentFragment = FRAGMENT_MY_PROFILE;
+        }
+    }
+    private void openOwnerStateFragment() {
+        if (mCurrentFragment != FRAGMENT_OWNER_STATE)
+        {
+            Intent i = new Intent(CustomerMainActivity.this, OwnerMainActivity.class);
+            startActivity(i);
+            ((Activity) CustomerMainActivity.this).overridePendingTransition(0, 0);
         }
     }
     // Hàm thay trang
@@ -223,11 +220,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             openMessageFragment();
             mbottomNavigationView.getMenu().findItem(R.id.message).setChecked(true);
         }
-        else if (id == R.id.nav_setting)
-        {
-            openSettingFragment();
-            mbottomNavigationView.getMenu().findItem(R.id.setting).setChecked(true);
-        }
         else if (id == R.id.nav_infor)
         {
 
@@ -236,11 +228,57 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         }
         else if (id == R.id.nav_sign_owner)
         {
-
+            openOwnerStateFragment();
+            mbottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         }
-        else if (id == R.id.nav_payment_infor)
+        else if (id == R.id.nav_security_setup)
         {
 
+        }
+        else if (id == R.id.nav_notification_setup)
+        {
+
+        }
+        else if (id == R.id.nav_delete_account)
+        {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("Bạn thực sự muốn xóa tài khoản ?");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Có",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                user.delete()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(CustomerMainActivity.this, "Tài khoản đã bị xóa.", Toast.LENGTH_LONG).show();
+                                                    Intent intent = new Intent(CustomerMainActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                    ((Activity) CustomerMainActivity.this).overridePendingTransition(0, 0);
+                                                } else {
+                                                    Toast.makeText(CustomerMainActivity.this, "Xóa tài khoản không thành công", Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "Không",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
         else if (id == R.id.nav_sign_out)
         {
@@ -293,9 +331,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
             case FRAGMENT_MESSAGE:
                 title = getString(R.string.nav_message);
                 break;
-            case FRAGMENT_SETTING:
-                title = getString(R.string.nav_setting);
-                break;
 
             case FRAGMENT_MY_PROFILE:
                 title = getString(R.string.nav_infor);
@@ -334,7 +369,11 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                 }
                 String name = mUser.getUsername();
                 String email = mUser.getEmail();
-                Uri photoUrl = Uri.parse(mUser.getAvatarURL());
+                if (mUser.getAvatarURL() != null)
+                {
+                    Uri photoUrl = Uri.parse(mUser.getAvatarURL());
+                    Glide.with(mMainActivity).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
+                }
 
                 if (name == null)
                 {
@@ -346,7 +385,6 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
                     tvName.setText(name);
                 }
                 tvEmail.setText(email);
-                Glide.with(mMainActivity).load(photoUrl).error(R.drawable.ic_avatar_default).into(imgAvatar);
             }
         });
 

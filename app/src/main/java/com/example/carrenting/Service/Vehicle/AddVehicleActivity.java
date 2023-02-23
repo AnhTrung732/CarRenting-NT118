@@ -1,13 +1,7 @@
 package com.example.carrenting.Service.Vehicle;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,31 +12,50 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.carrenting.ActivityPages.OwnerMainActivity;
+import com.example.carrenting.Model.User;
+import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class AddVehicleActivity extends AppCompatActivity {
 
-    private String documentId, path;
-    private Uri mImageURI, downloadUri;
+    private FirebaseUser firebaseUser;
+    private String documentId, downloadUrl;
+    private Uri mImageURI;
     private EditText vehicle_name, vehicle_seats, vehicle_price, vehicle_owner, vehicle_number;
     private CheckBox vehicle_available;
     private Button btnAdd;
     private ImageView vehicle_imgView;
-    private FirebaseFirestore dtb_vehicle;
+    private FirebaseFirestore dtb_vehicle, dtb_user, dtb_update;
     private FirebaseStorage storage;
-    private StorageReference storageRef;
-    private DocumentReference documentRef;
+    private StorageReference storageReference;
+    private String imageID;
+    private User user = new User();
+    private Vehicle vehicle = new Vehicle();
 
     ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent()
             , new ActivityResultCallback<Uri>() {
@@ -56,15 +69,20 @@ public class AddVehicleActivity extends AppCompatActivity {
                 }
             });
 
-    private void findViewByIds() {
+    private void init() {
         vehicle_name = findViewById(R.id.et_name);
         vehicle_seats = findViewById(R.id.et_seats);
         vehicle_price = findViewById(R.id.et_price);
         vehicle_owner = findViewById(R.id.et_owner);
         vehicle_number = findViewById(R.id.et_number);
-        vehicle_available = findViewById(R.id.cb_availability);
         vehicle_imgView = findViewById(R.id.img_view);
         btnAdd = findViewById(R.id.btn_add);
+
+        dtb_vehicle = FirebaseFirestore.getInstance();
+        dtb_user = FirebaseFirestore.getInstance();
+        dtb_update = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user.setUser_id(firebaseUser.getUid());
     }
 
 
@@ -72,11 +90,14 @@ public class AddVehicleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
-        findViewByIds();
+
+
+        init();
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(FullFill() == true)
+                if(FullFill())
                 {
                     addVehicle();
                 }
@@ -96,34 +117,77 @@ public class AddVehicleActivity extends AppCompatActivity {
     }
 
     private void addVehicle() {
-        dtb_vehicle = FirebaseFirestore.getInstance();
 
-        String availability = vehicle_available.isChecked() ? "available" : "unavailable";
+        dtb_user.collection("Users")
+            .whereEqualTo("user_id", user.getUser_id())
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()){
+                        for (QueryDocumentSnapshot document : task.getResult()){
+                            vehicle.setProvider_id(document.get("user_id").toString());
+                            vehicle.setProvider_name(document.get("username").toString());
+                            vehicle.setProvider_address(document.get("street").toString() + " " + document.get("city").toString());
+                            vehicle.setProvider_gmail(document.get("email").toString());
+                            vehicle.setProvider_phone(document.get("phoneNumber").toString());
 
-        Map<String, Object> vehicle = new HashMap<>();
-        vehicle.put("name", vehicle_name.getText().toString());
-        vehicle.put("seats", vehicle_seats.getText().toString());
-        vehicle.put("price", vehicle_price.getText().toString());
-        vehicle.put("owner", vehicle_owner.getText().toString());
-        vehicle.put("number", vehicle_number.getText().toString());
-        /*        vehicle.put("imageURL", "null");*/
-        vehicle.put("availability", availability);
-        dtb_vehicle.collection("Vehicle")
-                .add(vehicle)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        documentId = documentReference.getId();
-                        documentRef = dtb_vehicle.document("Vehicle/" + documentId);
-                        Toast.makeText(AddVehicleActivity.this, "Vehicle added successfully", Toast.LENGTH_LONG).show();
+                            vehicle.setVehicle_name(vehicle_name.getText().toString());
+                            vehicle.setVehicle_seats(vehicle_seats.getText().toString());
+                            vehicle.setVehicle_price(vehicle_price.getText().toString() + " VND");
+                            vehicle.setOwner_name(vehicle_owner.getText().toString());
+                            vehicle.setVehicle_number(vehicle_number.getText().toString());
+                            vehicle.setVehicle_availability("available");
+                            vehicle.setVehicle_imageURL(downloadUrl);
+
+                            dtb_vehicle.collection("Vehicles")
+                                .add(vehicle)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        vehicle.setVehicle_id(documentReference.getId());
+                                        Log.e("", vehicle.getVehicle_id());
+                                        updateData(vehicle.getVehicle_id());
+                                        Intent intent = new Intent(AddVehicleActivity.this, OwnerMainActivity.class);
+                                        startActivity(intent);
+                                        toast("Thêm xe thành công");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        toast("Thêm xe thất bại");
+                                    }
+                                });
+                        }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("Error adding document", e);
+                    else {
+                        //
+                        Toast.makeText(AddVehicleActivity.this, "Không thể lấy thông tin", Toast.LENGTH_LONG).show();
                     }
-                });
+                }
+
+                private void updateData(String vehicle_id) {
+                    Log.e("", vehicle_id);
+                    Map<String, Object> data = new HashMap<>();
+                    data.put("vehicle_id", vehicle_id);
+
+                    dtb_update.collection("Vehicles").document(vehicle_id)
+                            .update(data)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(AddVehicleActivity.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AddVehicleActivity.this, "Error updating document", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                }
+            });
     }
 
     private boolean FullFill() {
@@ -144,47 +208,47 @@ public class AddVehicleActivity extends AppCompatActivity {
     }
 
     private void uploadImage() {
-        // Check if an image was selected
-        if (vehicle_imgView.getDrawable() == null) {
-            Toast.makeText(AddVehicleActivity.this, "Please select an image", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        // Get image from ImageView as bitmap
-        Bitmap bitmap = ((BitmapDrawable) vehicle_imgView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        // Initialize storage reference
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
+        storageReference = storage.getReference();
 
-        // Create a reference to "VehicleImages/documentId.jpg"
-        StorageReference imageRef = storageRef.child("VehicleImages/" + documentId + ".jpg");
+        if(mImageURI != null)
+        {
+            imageID = UUID.randomUUID().toString();
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-        // Upload image
-        UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.w("Error uploading image", exception);
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // Get the public URL of the uploaded image
-                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        downloadUri = uri;
-                        documentRef.update("imageURL", downloadUri.toString());
-                    }
-                });
-
-                Toast.makeText(AddVehicleActivity.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
-            }
-        });
+            StorageReference ref = storageReference.child("VehicleImages/"+ imageID);
+            ref.putFile(mImageURI)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl = uri.toString();
+                                    //Toast.makeText(getBaseContext(), "Upload success! URL - " + downloadUrl, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddVehicleActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
     }
-
 }

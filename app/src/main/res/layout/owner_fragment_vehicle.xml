@@ -4,67 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentPages.Owner.Owner_VehicleFragment">
+    tools:context=".FragmentPages.Owner.OwnerVehicleFragment">
+
     <TextView
         android:id="@+id/tv_title"
         android:text="QUẢN LÝ XE"
         android:textStyle="bold"
-        android:textSize="40sp"
+        android:textSize="@dimen/_30ssp"
         android:textColor="@color/sunset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         tools:ignore="HardcodedText,MissingConstraints" />
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_35sdp"
-        android:text="Thêm"
-        app:layout_constraintTop_toTopOf="@+id/tv_title"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         android:background="@drawable/blue_round_button"
+        android:backgroundTint="@color/sky"
+        android:text="Thêm xe"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="35dp"
-        tools:ignore="HardcodedText,InefficientWeight,MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_title"
+        tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btn_vehicle_list"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text="DANH SÁCH"
-        android:textSize="18sp"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-    <Button
-        android:id="@+id/btn_location"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text= "VỊ TRÍ"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/blue_round_border"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_vehicle_list"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        tools:ignore="MissingConstraints">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:paddingBottom="@dimen/_75sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vehicle_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            tools:ignore="MissingConstraints">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

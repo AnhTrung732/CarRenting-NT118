@@ -97,7 +97,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
                             .collection(getString(R.string.collection_users))
                             .document(FirebaseAuth.getInstance().getUid());
 
-                    newUserRef.update("phoneNumber", phoneNumber).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    newUserRef.update("activatePhone", "Yes").addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -128,7 +128,7 @@ public class ValidatePhoneActivity extends AppCompatActivity {
     private void VerifyPhoneNumber(String phoneNumber){
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber(phoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
+                .setTimeout(120L, TimeUnit.SECONDS)
                 .setActivity(this)
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override

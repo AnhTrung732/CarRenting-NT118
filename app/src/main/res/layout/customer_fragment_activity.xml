@@ -10,82 +10,31 @@
         android:id="@+id/tv_title"
         android:text="HOẠT ĐỘNG"
         android:textStyle="bold"
-        android:textSize="40sp"
+        android:textSize="@dimen/_30ssp"
         android:textColor="@color/sunset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-    <LinearLayout
-        android:id="@+id/linear_history"
-        android:orientation="horizontal"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_title"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ic_history"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            tools:ignore="InefficientWeight" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="5"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="normal"
-            android:text="Lịch sử" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_wait"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text="Đang chờ"
-        android:textSize="18sp"
-        android:background="@drawable/blue_round_border"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-    <Button
-        android:id="@+id/btn_rate"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text="Đánh giá"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/blue_round_border"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         tools:ignore="HardcodedText,MissingConstraints" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wait"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        tools:ignore="MissingConstraints">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:paddingBottom="@dimen/_100sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            tools:ignore="MissingConstraints">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

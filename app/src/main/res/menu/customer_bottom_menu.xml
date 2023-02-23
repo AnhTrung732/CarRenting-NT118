@@ -23,9 +23,4 @@
         android:title="Message"
         android:icon="@drawable/ic_message"
         tools:ignore="HardcodedText" />
-    <item
-        android:id="@+id/setting"
-        android:title="Setting"
-        android:icon="@drawable/ic_setting"
-        tools:ignore="HardcodedText" />
 </menu>

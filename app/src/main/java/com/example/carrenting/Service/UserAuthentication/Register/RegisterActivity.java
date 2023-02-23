@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;
+import com.example.carrenting.Service.UserAuthentication.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -127,8 +128,11 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         String strPhone = edtTxtPhone.getText().toString().trim();
         String strEmail = edtTxtEmail.getText().toString().trim();
         String strPassword = edtTxtPassword.getText().toString().trim();
+
+
         Log.d(strEmail,strPassword);
         progressDialog.show();
+
         mAuth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -142,7 +146,8 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                             user.setUsername(strEmail.substring(0, strEmail.indexOf("@")));
                             user.setUser_id(FirebaseAuth.getInstance().getUid());
                             user.setPassword(strPassword);
-
+                            user.setPhoneNumber(strPhone);
+                            user.setActivatePhone("No");
                             FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                                     .build();
                             mDb.setFirestoreSettings(settings);
@@ -156,8 +161,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                                 public void onComplete(@NonNull Task<Void> task) {
                                     progressDialog.dismiss();
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(RegisterActivity.this, ValidatePhoneActivity.class);
-                                        intent.putExtra("phone", strPhone);
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                     }else{
                                         View parentLayout = findViewById(android.R.id.content);
@@ -166,11 +170,10 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                                 }
                             });
 
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                            Toast.makeText(RegisterActivity.this, "Email đã được đăng ký",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

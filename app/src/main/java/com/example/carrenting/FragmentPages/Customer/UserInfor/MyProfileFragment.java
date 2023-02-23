@@ -261,75 +261,80 @@ public class MyProfileFragment extends Fragment {
         newUserRef.update(dataUser);
         Toast.makeText(getActivity(),"Update user information successful", Toast.LENGTH_SHORT).show();
 
-        StorageReference fileReference_avatar = storageReference_avatar.child(System.currentTimeMillis()
-                + "." + mMainActivity.getFileExtension(mAvatarUri));
-        fileReference_avatar.putFile(mAvatarUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Log.d("URI",uri.toString());
-                                newUserRef.update("avatarURL", uri.toString());
-                                Toast.makeText(getActivity(),"Upload avatar successful", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (mAvatarUri != null) {
+            StorageReference fileReference_avatar = storageReference_avatar.child(System.currentTimeMillis()
+                    + "." + mMainActivity.getFileExtension(mAvatarUri));
+            fileReference_avatar.putFile(mAvatarUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("URI", uri.toString());
+                                    newUserRef.update("avatarURL", uri.toString());
+                                    Toast.makeText(getActivity(), "Upload avatar successful", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+        if (frontUri != null) {
+            StorageReference fileReference_front = storageReference_front.child(System.currentTimeMillis()
+                    + "." + mMainActivity.getFileExtension(frontUri));
+            fileReference_front.putFile(frontUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("URI", uri.toString());
+                                    newUserRef.update("ciCardFront", uri.toString());
+                                    //Toast.makeText(SignProfileActivity.this,"Upload image successful", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+        if (behindUri != null)
+        {
+            StorageReference fileReference_behind = storageReference_behind.child(System.currentTimeMillis()
+                    + "." + mMainActivity.getFileExtension(behindUri));
+            fileReference_behind.putFile(behindUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("URI",uri.toString());
+                                    newUserRef.update("ciCardBehind", uri.toString());
+                                    //Toast.makeText(SignProfileActivity.this,"Upload image successful", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-        StorageReference fileReference_front = storageReference_front.child(System.currentTimeMillis()
-                + "." + mMainActivity.getFileExtension(frontUri));
-        fileReference_front.putFile(frontUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Log.d("URI",uri.toString());
-                                newUserRef.update("ciCardFront", uri.toString());
-                                //Toast.makeText(SignProfileActivity.this,"Upload image successful", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-        StorageReference fileReference_behind = storageReference_behind.child(System.currentTimeMillis()
-                + "." + mMainActivity.getFileExtension(behindUri));
-        fileReference_behind.putFile(behindUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Log.d("URI",uri.toString());
-                                newUserRef.update("ciCardBehind", uri.toString());
-                                //Toast.makeText(SignProfileActivity.this,"Upload image successful", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(getActivity(), "Upload image failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        }
 
 //        Intent intent = new Intent(getActivity(), ValidatePhoneActivity.class);
 //        intent.putExtra("phone", strPhone);
@@ -361,21 +366,49 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void bindingDataUser(User user) {
-
-        edtUserName.setText(user.getUsername().toString().trim());
-        edtPhone.setText(user.getPhoneNumber().toString().trim());
-        edtEmail.setText(user.getEmail().toString().trim());
-        edtLicense.setText(user.getDriverLicense().toString().trim());
-        edtStreet.setText(user.getStreet().toString().trim());
-        edtCity.setText(user.getCity().toString().trim());
-        edtPostalCode.setText(user.getPostalCode().toString().trim());
-        tvBirthDate.setText(user.getDateOfBirth().toString().trim());
-        mAvatarUri = Uri.parse(user.getAvatarURL());
-        frontUri = Uri.parse(user.getCiCardFront());
-        behindUri = Uri.parse(user.getCiCardBehind());
-        Glide.with(getActivity()).load(user.getAvatarURL()).error(R.drawable.ic_avatar_default).into(imgAvatar);
-        Glide.with(getActivity()).load(user.getCiCardFront()).into(ivFrontCiCard);
-        Glide.with(getActivity()).load(user.getCiCardBehind()).into(ivBehindCiCard);
+        if (user.getUsername() != null)
+        {
+            edtUserName.setText(user.getUsername().toString().trim());
+        }
+        if (user.getPhoneNumber() != null)
+        {
+            edtPhone.setText(user.getPhoneNumber().toString().trim());
+        }
+        if (user.getEmail() != null)
+        {
+            edtEmail.setText(user.getEmail().toString().trim());
+        }
+        if (user.getDriverLicense() != null)
+        {
+            edtLicense.setText(user.getDriverLicense().toString().trim());
+        }
+        if (user.getStreet() != null)
+        {
+            edtStreet.setText(user.getStreet().toString().trim());
+        }
+        if (user.getPostalCode() != null)
+        {
+            edtPostalCode.setText(user.getPostalCode().toString().trim());
+        }
+        if (user.getDateOfBirth() != null)
+        {
+            tvBirthDate.setText(user.getDateOfBirth().toString().trim());
+        }
+        if (user.getAvatarURL() != null)
+        {
+            mAvatarUri = Uri.parse(user.getAvatarURL());
+            Glide.with(getActivity()).load(mAvatarUri).error(R.drawable.ic_avatar_default).into(imgAvatar);
+        }
+        if (user.getCiCardFront() != null)
+        {
+            frontUri = Uri.parse(user.getCiCardFront());
+            Glide.with(getActivity()).load(frontUri).into(ivFrontCiCard);
+        }
+        if (user.getCiCardBehind() != null)
+        {
+            behindUri = Uri.parse(user.getCiCardBehind());
+            Glide.with(getActivity()).load(behindUri).into(ivBehindCiCard);
+        }
     }
 
     private void initUI() {

@@ -23,9 +23,14 @@
             <item android:id="@+id/nav_sign_owner"
                 android:title="@string/nav_sign_owner"/>
 
-            <item android:id="@+id/nav_payment_infor"
-                android:title="@string/nav_payment_infor"/>
+            <item android:id="@+id/nav_security_setup"
+                android:title="@string/nav_security_setup"/>
 
+            <item android:id="@+id/nav_notification_setup"
+                android:title="@string/nav_notification_setup"/>
+
+            <item android:id="@+id/nav_delete_account"
+                android:title="@string/nav_delete_account"/>
 
             <item android:id="@+id/nav_sign_out"
                 android:title="@string/nav_sign_out"/>

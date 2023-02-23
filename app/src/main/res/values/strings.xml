@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CarRenting</string>
+    <string name="app_name">CarRentingTB</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="google_maps_api_key">AIzaSyAPzOsCzNVbsbCZp8S0PXpGwk-Mmtn-j9o</string>
 
@@ -22,8 +22,11 @@
 
     <string name="nav_user">Người dùng</string>
     <string name="nav_infor">Thông tin tài khoản</string>
-    <string name="nav_sign_owner">Đăng ký nhà cung cấp</string>
+    <string name="nav_sign_owner">Trạng thái nhà cung cấp</string>
     <string name="nav_payment_infor">Thông tin thanh toán</string>
+    <string name="nav_security_setup">Thiết lập bảo mật</string>
+    <string name="nav_notification_setup">Thiết lập thông báo</string>
+    <string name="nav_delete_account">Xóa tài khoản</string>
     <string name="nav_sign_out">Đăng xuất</string>
 
     <string name="open_drawer">Open navigation drawer</string>

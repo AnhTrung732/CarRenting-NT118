@@ -24,6 +24,7 @@ import com.example.carrenting.Model.User;
 import com.example.carrenting.Model.UserClient;
 import com.example.carrenting.R;
 import com.example.carrenting.Service.UserAuthentication.Register.RegisterActivity;
+import com.example.carrenting.Service.UserAuthentication.Register.ValidatePhoneActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -151,6 +152,45 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void finishLogin()
+    {
+        Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            String uid = firebaseUser.getUid();
+            FirebaseFirestore.getInstance().collection("Users").document(uid)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    // do something with the retrieved data
+                                    String phonenumber = document.getString("phoneNumber");
+                                    String activatePhone = document.getString("activatePhone");
+                                    if (activatePhone.equals("No")) {
+                                        Intent intent = new Intent(LoginActivity.this, ValidatePhoneActivity.class);
+                                        intent.putExtra("phone", phonenumber);
+                                        startActivity(intent);
+                                    } else if (activatePhone.equals("Yes")) {
+                                        Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
+                                        startActivity(intent);
+                                        onStop();
+                                    }
+
+                                } else {
+                                    // the document does not exist
+                                }
+                            } else {
+                                // handle the error
+                            }
+                        }
+                    });
+        }
+    }
+
     private void login() {
         String email, password;
         email = edtTxt_email.getText().toString();
@@ -164,21 +204,22 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         progressDialog.show();
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, CustomerMainActivity.class);
-                    startActivity(intent);
-                    finishAffinity();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Đăng nhập không thành công", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            // Sign in success, update UI with the signed-in user's information
+                            finishLogin();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thất bại.", Toast.LENGTH_SHORT).show();
+                            progressDialog.cancel();
+                        }
+                    }
+                });
     }
+
 
 
 }

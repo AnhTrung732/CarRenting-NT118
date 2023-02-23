@@ -26,6 +26,9 @@ public class User implements Parcelable{
     private String ciCardBehind;
 
 
+
+    private String activatePhone;
+
     public User() {
 
     }
@@ -43,6 +46,7 @@ public class User implements Parcelable{
         postalCode = in.readString();
         ciCardFront = in.readString();
         ciCardBehind = in.readString();
+        activatePhone = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -166,8 +170,15 @@ public class User implements Parcelable{
         this.password = password;
     }
 
+    public String getActivatePhone() {
+        return activatePhone;
+    }
 
-    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String street, String city, String postalCode, String password, String ciCardFront, String ciCardBehind) {
+    public void setActivatePhone(String activatePhone) {
+        this.activatePhone = activatePhone;
+    }
+
+    public User(String email, String user_id, String username, String avatarURL, String driverLicense, String dateOfBirth, String phoneNumber, String street, String city, String postalCode, String password, String ciCardFront, String ciCardBehind, String activatePhone) {
         this.email = email;
         this.user_id = user_id;
         this.username = username;
@@ -181,6 +192,7 @@ public class User implements Parcelable{
         this.password = password;
         this.ciCardFront = ciCardFront;
         this.ciCardBehind = ciCardBehind;
+        this.activatePhone = activatePhone;
     }
 
     @Override
