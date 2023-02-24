@@ -1,6 +1,5 @@
 package com.example.carrenting.Adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,7 +38,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         return new MyViewHolder(v);
     }
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.carrenting.FragmentPages.Owner.OwnerActivityFragment;
+import com.example.carrenting.FragmentPages.Owner.OwnerNotificationsFragment;
 import com.example.carrenting.Model.Notification;
 import com.example.carrenting.Model.User;
 import com.example.carrenting.R;

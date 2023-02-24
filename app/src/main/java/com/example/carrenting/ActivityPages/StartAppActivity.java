@@ -1,12 +1,7 @@
 package com.example.carrenting.ActivityPages;
 
-import static android.content.ContentValues.TAG;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,20 +30,10 @@ import java.util.ArrayList;
 public class StartAppActivity extends AppCompatActivity {
     private Button btn_startApp;
     ImageSlider imageSlider;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_app);
-
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                nextActivity();
-//            }
-//        }, 2000);
-
 
         imageSlider = (ImageSlider) findViewById(R.id.imageView3);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
@@ -95,13 +80,13 @@ public class StartAppActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
-                        Log.d(TAG, "onComplete: successfully set the user client.");
+                        //Toast.makeText(StartAppActivity.this, "Success", Toast.LENGTH_LONG).show();
                         User user = task.getResult().toObject(User.class);
                         ((UserClient)(getApplicationContext())).setUser(user);
                     }
                 }
             });
-            Intent intent = new Intent(this, CustomerMainActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
 

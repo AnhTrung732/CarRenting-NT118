@@ -1,6 +1,5 @@
 package com.example.carrenting.Adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.example.carrenting.FragmentPages.Owner.OwnerVehicleFragment;
 import com.example.carrenting.Model.Vehicle;
 import com.example.carrenting.Model.onClickInterface;
 import com.example.carrenting.R;
-import com.example.carrenting.Service.Vehicle.UpdateVehicleAcitivty;
+import com.example.carrenting.Service.Vehicle.UpdateVehicle;
 
 import java.util.ArrayList;
 
@@ -33,13 +32,13 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OwnerVehicleAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(ownerVehicleFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull OwnerVehicleAdapter.MyViewHolder holder, int position) {
         vehicle = vehicles.get(position);
         holder.name.setText(vehicle.getVehicle_name());
         holder.price.setText(vehicle.getVehicle_price());
@@ -51,7 +50,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
             public void onClick(View v) {
                 onClickInterface.setClick(position);
                 vehicle = vehicles.get(position);
-                Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicleAcitivty.class);
+                Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
                 intent.putExtra("vehicle_id", vehicle.getVehicle_id());
                 ownerVehicleFragment.startActivity(intent);
             }
